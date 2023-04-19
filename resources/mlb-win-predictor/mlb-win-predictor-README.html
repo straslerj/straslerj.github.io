@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mlb-win-predictor-README</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+    <div class="stackedit__html">
+        <h1 id="mlb-win-predictor">MLB Win Predictor</h1>
+        <p><strong><a href="https://github.com/straslerj/mlb-win-predictor">View the source code here!</a></strong></p>
+        <p>In the world of <a href="https://en.wikipedia.org/wiki/Sabermetrics">sabermetrics</a>, traditional stats such
+            as pitcher’s earned run average (ERA) and win-loss records have lost some of their weight as success
+            predictors in the MLB. This project aims to determine just how accurate, or inaccurate, traditional and
+            sabermetric statistics can be in predicting the outcome of a baseball game.</p>
+        <p>This project is hosted on AWS and takes advantage of its lambda functionality, its S3 buckets, and its RDS.
+            See more in <a href="#architecture">Architecture</a>.</p>
+        <h2 id="what-does-this-project-do">What Does This Project Do?</h2>
+        <p>In short, this project is two phases:</p>
+        <h3 id="collect-data-to-train-a-model">Collect Data to Train a Model</h3>
+        <p>The part of this project that has already been developed and deployed. Because I want the statistics for a
+            pitcher <em>going into</em> a game, I add all of the pitchers and their <a
+                href="https://library.fangraphs.com/pitching/era/">ERA</a>, win-loss record, innings pitched, <a
+                href="https://en.wikipedia.org/wiki/Strikeouts_per_nine_innings_pitched">K/9</a>, <a
+                href="https://en.wikipedia.org/wiki/Bases_on_balls_per_nine_innings_pitched">BB/9</a>, strikeout
+            percentage minus walk percentage (K% - BB%), <a
+                href="https://library.fangraphs.com/pitching/whip/">WHIP</a>, and <a
+                href="https://library.fangraphs.com/pitching/babip/">BABIP</a> to the database. The next day, I update
+            each game in the database to denote which team won the game. This allows for the most accurate statistics to
+            be used when building the model.</p>
+        <h3 id="building-the-prediction-model">Building the Prediction Model</h3>
+        <p>The second part of this project will be building the model to be used to predict the outcome of a game based
+            on the starting pitchers’ statistics.</p>
+        <h2 id="schedule">Schedule</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Season</strong></th>
+                    <th><strong>Plan</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>2023</strong></td>
+                    <td>Run a continuous script which will write to a database, for every game, the: <br> - Starting
+                        pitchers (home and away)<br> - Starting pitchers’ ERA<br> - Starting pitchers’ Win-Loss
+                        record<br> - Starting pitchers’ K/9<br> - Starting pitchers’ BB/9<br> - Starting pitchers’ K% -
+                        BB%<br> - Starting pitchers’ WHIP<br> - Starting pitchers’ BABIP<br> - The outcome of the game
+                        (which team wins, which team loses)<br><br>Then, for the 2024 season, I will build a model from
+                        the recorded data in an effort to predict the outcome of games. One model will be using
+                        “traditional” statistics, one using “sabermetrics”, and another using a combintation of the two.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>2024+</strong></td>
+                    <td>Use the aforementioned models to try to predict outcomes of games, record the accuracy, and
+                        refine the models/attempt to draw conclusions from this experiment.<br></td>
+                </tr>
+            </tbody>
+        </table>
+        <blockquote>
+            <p><strong>Why not use the 2022 season to train a model for the 2023 season?</strong></p>
+            <p>I need to get the data <em>going into</em> the game, and unfortunately there is no way to access what,
+                say, John Smith’s ERA was before pitching on July 4th, 2022. So, I will be logging each day’s matchups
+                with the pitchers’ stats going into the game and will then update who won and lost the game the next
+                day.</p>
+        </blockquote>
+        <h2 id="architecture">Architecture</h2>
+        <p>This is currently the current architecture project.</p>
+        <blockquote>
+            <p>Note that this diagram may display weird if you have “Dark Mode” on</p>
+        </blockquote>
+        <p><img src="architecture_diagram.png" alt="arch"></p>
+        <h2 id="future-architecture">Future Architecture</h2>
+        <p>Once the data is collected, I anticipate the architecture looking similar to:</p>
+        <blockquote>
+            <p>Note that this diagram may display weird if you have “Dark Mode” on</p>
+        </blockquote>
+        <p><img src="future_architecture_diagram.png" alt="future_arch"></p>
+    </div>
+</body>
+
+</html>

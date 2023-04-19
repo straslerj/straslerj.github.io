@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>finance-analyzer-README</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html">
+    <h1 id="finance-analyzer">Finance Analyzer</h1>
+    <p><a href="https://github.com/straslerj/finance_analyzer/blob/main/README.md"><strong>View the source code
+          here!</strong></a></p>
+    <p>This program is designed to track, analyze, and visualize financial habits using Python and libraries.</p>
+    <h2 id="table-of-contents">Table of Contents</h2>
+    <ol>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#input-and-output">Input and Output</a></li>
+      <li><a href="#description-of-functionality">Description of Functionality</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#external-libraries-used">External Libraries Used</a></li>
+      <li><a href="#future-direction">Future Direction</a></li>
+    </ol>
+    <h2 id="background">Background</h2>
+    <p>This project started as a way for me to not have to manually update categorical amounts every time I added to my
+      register, hence the use of openpyxl and Excel serving as the “database”.</p>
+    <p>While writing a script to add my expenses and let Python take care of the rest, I realized the opportunity for
+      some data analysis and visualization. I decided to turn this analysis in a report. This automatically-generated
+      report would be a nice way to show me my financial habits quickly and in a digestible manner.</p>
+    <h2 id="architecture">Architecture</h2>
+    <p>The following image represents the current state of the project’s architecture.</p>
+    <p><img src="architecture.jpg" alt="architecture"></p>
+    <h2 id="input-and-output">Input and Output</h2>
+    <p>The following shows the user’s interaction with the program. The parts that are marked as <code>code</code> are
+      part of the program. Regular text is user input.</p>
+    <p><code>bash-3.2$</code> python3 <a href="http://budget.py">budget.py</a> -fl</p>
+    <pre><code>Most recent entry: 7-10-22  Gas @ Shell ... category = ga  $67.76
+
+Would you like to add an entry? y/n
+</code></pre>
+    <p>y</p>
+    <pre><code>Entry category:
+
+     (r) rent
+
+     (i) internet
+
+     (e) electricity
+
+     (g) groceries
+
+     (eo) eating out
+
+     (ga) gas
+
+     (v) vehicle
+
+     (d) dog
+
+     (cn) consumer - need
+
+     (cw) consumer - want
+
+     (in) income
+</code></pre>
+    <p>in</p>
+    <p><code>Entry amount: $</code><em>2000</em></p>
+    <p><code>Year:</code> 2022</p>
+    <p><code>Month:</code> 7</p>
+    <p><code>Day:</code> 15</p>
+    <p><code>Description:</code> Paycheck</p>
+    <p><code>Would you like to add an entry? y/n</code></p>
+    <p>y</p>
+    <pre><code>Entry category:
+
+     (r) rent
+
+     (i) internet
+
+     (e) electricity
+
+     (g) groceries
+
+     (eo) eating out
+
+     (ga) gas
+
+     (v) vehicle
+
+     (d) dog
+
+     (cn) consumer - need
+
+     (cw) consumer - want
+
+     (in) income
+</code></pre>
+    <p>d</p>
+    <p><code>Entry amount: $</code>10</p>
+    <p><code>Year:</code> 2022</p>
+    <p><code>Month:</code> 7</p>
+    <p><code>Day:</code> 19</p>
+    <p><code>Description:</code> Treats for Fido</p>
+    <p><code>Would you like to add an entry? y/n</code></p>
+    <p>n</p>
+    <pre><code>Time spent entering data: 0:00:49.118304
+
+Time spent generating plots: 0:00:00.840138
+
+Do you have debts to add? y/n
+</code></pre>
+    <p>y</p>
+    <p><code>Description:</code> Mortgage</p>
+    <p><code>Amount: $</code>230000</p>
+    <p><code>Do you have debts to add? y/n</code></p>
+    <p>n</p>
+    <p><code>Do you have assets to add? y/n</code></p>
+    <p>y</p>
+    <p><code>Description:</code> House</p>
+    <p><code>Amount: $</code>450000</p>
+    <p><code>Do you have assets to add? y/n</code></p>
+    <p>n</p>
+    <p><code>What is your credit score?</code> 789</p>
+    <p><code>What is your source?</code> Experian</p>
+    <p><code>What name would you like to appear on the report?</code> John J. Smith</p>
+    <pre><code>Time spent entering additional data: 0:01:01.620029
+
+Time spent generating report: 0:00:00.000552
+
+Total time spent: 0:01:50.784277
+</code></pre>
+    <p>This input, along with a couple of other pieces of existing data in the Excel sheet, produce the following
+      report. Note that the report is generated as Markdown. This image shows the Markdown after it has been rendered.
+    </p>
+    <p><img src="report-screenshot.png" alt="report"></p>
+    <h2 id="description-of-functionality">Description of Functionality</h2>
+    <h3 id="basics">Basics</h3>
+    <p>The program will prompt user for expenses/incomes to add to the register, and add the data respectivly to the
+      spreadsheet. The spreadsheet serves this system primarily as a database. A report, including plots, is generated
+      at the end of running and can be found in the directory from which the program was run.</p>
+    <p><strong>Note: the report is written over each time the program is run. To save specific reports, you must do so
+        manually.</strong></p>
+    <h3 id="in-addition-to-the-basics">In addition to the basics,</h3>
+    <h3 id="display"><code>--display</code></h3>
+    <p>This argument opens the markdown file that is generated at the end of running. Note that this is by default done
+      through QLMarkdown and <strong>the codebase should be updated to your favorite application to view
+        Markdown</strong>.</p>
+    <h3 id="credit"><code>--credit</code></h3>
+    <p>A simple prompt that requires you to put in your credit score and the source from which you got it. Note that
+      this is self-reporting - the program does not integrate with any credit services.</p>
+    <h3 id="official"><code>--official</code></h3>
+    <p>Adds a line indicating whom this report was run for, which the user is prompted to input, to add a layer of
+      officialness to the document in case it is being presented to to, for example, a bank.</p>
+    <h3 id="networth"><code>--networth</code></h3>
+    <p>Prompts user similarly to the core functionality to get all debts and assets, lists debts and assets in the
+      report, and also calculates net worth, taking your current bank balance into consideration.</p>
+    <h3 id="register"><code>--register</code></h3>
+    <p>Shows a full register of your expenses.</p>
+    <h3 id="full"><code>--full</code></h3>
+    <p>All of the above functionality is executed.</p>
+    <h3 id="no-reg"><code>--no-reg</code></h3>
+    <p>Creates a full report without a register included.</p>
+    <h2 id="usage">Usage</h2>
+    <h3 id="getting-started">Getting Started</h3>
+    <p><em>Assuming all libraries are installed, which may require installation through <code>pip</code>, to start, do
+        the following:</em></p>
+    <ol>
+      <li>
+        <p>Clone the repository</p>
+      </li>
+      <li>
+        <p>Create a SQL database/table like follows:<br>
+          <img src="sql_columns.png" alt="sql">
+        </p>
+      </li>
+      <li>
+        <p>Update <code>budget.py</code><br>
+          a. There are SQL-specific variables that will need to be tailored to you. They are all named starting with
+          either <code>SQL_</code> or <code>DB_</code>.<br>
+          b. If you change your categories, these will need to be updated.<br>
+          c. Update the line <code>os.system("open report.md -a QLMarkdown")</code> in the second <code>if</code> in the
+          <code>try-except</code> statement at the end of the file.
+        </p>
+      </li>
+      <li>
+        <p>Run the program! To run the program, in your terminal, run <code>python3 budget.py -args</code>, where
+          <code>-args</code> is any (or none) of the following:
+        </p>
+      </li>
+    </ol>
+    <p><code>--display, -d</code></p>
+    <p><code>--credit, -cr</code></p>
+    <p><code>--official, -of</code></p>
+    <p><code>--networth, -nw</code></p>
+    <p><code>--full, -fl</code></p>
+    <h2 id="external-libraries-used">External Libraries Used</h2>
+    <p>The following libraries are the primary libraries I used to create this project. For a full list of depencies,
+      please look at the imports at the top of <code>budget.py</code></p>
+    <ul>
+      <li>
+        <p>Matplotlib</p>
+      </li>
+      <li>
+        <p>NumPy</p>
+      </li>
+      <li>
+        <p>MySQL</p>
+      </li>
+      <li>
+        <p>SnakeMD</p>
+      </li>
+    </ul>
+    <h2 id="future-direction">Future Direction</h2>
+    <p>Going forward, I have a couple of main changes that I would like to take this project:</p>
+    <h3 id="excel---sql">Excel -&gt; SQL</h3>
+    <p><s>I did my financial tracking in Excel, including creating visualizations of my habits, and originally just
+        started with this project to automate the updating of each categorical amount, which proved to be annoying to do
+        manually. I would like to create a SQL database for the long-term use of this project.</s></p>
+    <p>Completed in August 2022.</p>
+    <h3 id="investment-and-saving-tracking">Investment and Saving Tracking</h3>
+    <p>I would like to add additional functionality to this program to track investments and savings in a more focused
+      fashion. This might be a standalone project that I addd to this project.</p>
+  </div>
+</body>
+
+</html>
