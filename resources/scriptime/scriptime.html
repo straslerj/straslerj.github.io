@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scriptime</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html">
+    <h1 id="scriptime">scriptime</h1>
+    <p><strong><a href="https://github.com/straslerj/scriptime">View the source code here!</a></strong>
+    </p>
+    <p>Python library to notify when a script has finished running and providing insights such as run time, CPU and RAM
+      usage, and more.</p>
+    <ul>
+      <li><a href="#scriptime">scriptime</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#getting-started">Getting Started</a></li>
+          <li><a href="#using-scriptimer">Using scriptimer</a></li>
+          <li><a href="#output">Output</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="about">About</h2>
+    <p>This project will send you an email or text message notifying you when a script has completed running.
+      Configurable thorugh a config file, environment variables, or hardcoding the email credentials, this project has
+      little overhead to get started.</p>
+    <h2 id="getting-started">Getting Started</h2>
+    <p>The first step to using scriptime is setting up the email that will be sending the notifications. scriptime uses
+      the built-in Python SMTP to send emails which requires an email address, said email’s password, and an SMTP SSL
+      server and port. Therfore,</p>
+    <ol>
+      <li>Choose how you will pass your email credential into scriptime:
+        <ol>
+          <li>
+            <p><strong>JSON config file</strong></p>
+            <p>To set up, create a .json file with the following contents:</p>
+            <pre><code>{
+    "scriptime_email": "example@email.com",
+    "scriptime_password": "superSecure1",
+    "scriptime_server": "smtp.email.com"
+    "scriptime_port": 123&gt;
+}
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Environment variables</strong></p>
+            <p><em>Recommended – if you plan to use scriptime more than once this will be the simplest method over
+                time.</em></p>
+            <p>Set the following environment variales:</p>
+            <p><code>SCRIPTIME_EMAIL=example@email.com</code></p>
+            <p><code>SCRIPTIME_PASSWORD=superSecure1</code></p>
+            <p><code>SCRIPTIME_SERVER=smtp.email.com</code></p>
+            <p><code>SCRIPTIME_PORT=123</code></p>
+          </li>
+          <li>
+            <p><strong>Hard coding</strong></p>
+            <p>If you choose to go the hard code route, when creating the <code>Timer</code> object, you will need to
+              pass in extra arguments. Your constructor call should look something like:</p>
+            <pre class=" language-python"><code class="prism  language-python">timer <span class="token operator">=</span> Timer<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"hardcode"</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">"example@email.com"</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">"superSecure1"</span><span class="token punctuation">,</span> server<span class="token operator">=</span><span class="token string">"smtp.email.com"</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">)</span>
+</code></pre>
+            <blockquote>
+              <p>Note that if you are using Gmail, you may have to create an <a
+                  href="https://support.google.com/accounts/answer/185833?hl=en">app password</a>. Your normal password
+                will likely not work. Other email services may have similar catches.</p>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+    </ol>
+    <h2 id="using-scriptimer">Using scriptimer</h2>
+    <p>The use of scriptimer is very straightforward:</p>
+    <ol>
+      <li>
+        <p>In a terminal, <code>pip install scriptime</code></p>
+      </li>
+      <li>
+        <p>In a Python (.py) or Jupyter Notebook (.ipynb) file, add</p>
+        <pre class=" language-python"><code class="prism  language-python"><span class="token keyword">from</span> scriptime <span class="token keyword">import</span> Timer
+</code></pre>
+        <p>to your imports.</p>
+      </li>
+      <li>
+        <p>Create an instance of a timer, which could be done in three ways dependant on what you did in <a
+            href="#getting-started">Getting Started</a>:</p>
+        <ol>
+          <li>
+            <p><strong>JSON config file</strong></p>
+            <pre class=" language-python"><code class="prism  language-python">timer <span class="token operator">=</span> Timer<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"json"</span><span class="token punctuation">,</span> config_file<span class="token operator">=</span><span class="token string">"path/to/config.json"</span><span class="token punctuation">)</span>
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Environment variables</strong></p>
+            <pre class=" language-python"><code class="prism  language-python">timer <span class="token operator">=</span> Timer<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"env"</span><span class="token punctuation">)</span>
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Hard coding</strong></p>
+            <p>(This may look famiiliar):</p>
+            <pre class=" language-python"><code class="prism  language-python">timer <span class="token operator">=</span> Timer<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"hardcode"</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">"example@email.com"</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">"superSecure1"</span><span class="token punctuation">,</span> server<span class="token operator">=</span><span class="token string">"smtp.email.com"</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">)</span>
+</code></pre>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>Start the timer</p>
+        <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+      </li>
+      <li>
+        <p>Then, at the end of the script (or wherever you would like a notification), add one of or both of the
+          following:</p>
+        <ol>
+          <li>
+            <p><strong>Email notification</strong></p>
+            <p>To get an email notification, simply call the send_email function:</p>
+            <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>send_email<span class="token punctuation">(</span><span class="token string">"receiver@email.com"</span><span class="token punctuation">)</span>
+</code></pre>
+            <p>You can also send a text using your carrier’s email-to-SMS address. You can find your carrier at: <a
+                href="https://avtech.com/articles/138/list-of-email-to-sms-addresses/">list of carrier SMS emails</a>
+            </p>
+            <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>send_email<span class="token punctuation">(</span><span class="token string">"0123456789@text.att.net"</span><span class="token punctuation">)</span>
+</code></pre>
+            <p>Multiple email addresses, phone numbers, or any combination thereof can be passed in as a list:</p>
+            <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>send_email<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"receiver@email.com"</span><span class="token punctuation">,</span> <span class="token string">"0123456789@text.att.net"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+            <p>Lastly, if you would like to see the output of the body in order to have the statistics persistent or
+              just because you’re curious, simply use the <code>print_body</code> flag:</p>
+            <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>send_email<span class="token punctuation">(</span><span class="token string">"receiver@email.com"</span><span class="token punctuation">,</span> print_body<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Play sound</strong></p>
+            <p>If you would like an audible notification that your script has finished, simply:</p>
+            <pre class=" language-python"><code class="prism  language-python">timer<span class="token punctuation">.</span>play_sound<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+            <blockquote>
+              <p>If the time measurement aspect of this program is important to you, be sure to run the play sound after
+                sending the email (if you are sending the email at the end of the script) as it takes ~5 seconds to play
+                the sound.</p>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+    </ol>
+    <h2 id="output">Output</h2>
+    <p>The subject of the email will be:</p>
+    <pre><code>[MM-DD-YYYY HH:MM:SS] &lt;name of file&gt; Finished
+</code></pre>
+    <p>The email/text body will look like the following:</p>
+    <pre><code>Your script has finished.
+
+Elapsed Time: 00:00:01
+
+Max RAM Usage: 74.00%
+Max CPU Usage: 40.90%
+Remaining RAM Available: 2.08 GB
+
+System information: Darwin
+Processor: arm
+Python Version: 3.11.4
+
+Packages Used:
+Package: numpy, Version: 1.24.2
+Package: scikit-learn, Version: 1.2.2
+...
+</code></pre>
+  </div>
+</body>
+
+</html>
