@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Data Science Checklist</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
+    <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding: 20px 100px;
+        }
+
+        .header-container {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-container">
+        <div class="d-flex flex-column">
+            <h2>Data Science Checklist</h2>
+            <p>Developed by Dr. RJ Nowling, Milwaukee School of Engineering</p>
+            <p><a href="Data%20Science%20Checklist.docx">Download .docx</a></p>
+            <p><a href="data-science-checklist.md">Download .md</a></p>
+        </div>
+    </div>
+
+
+
+    <h4 id="data-review">Data Review</h4>
+    <ul>
+        <li><input type="checkbox" id="data-sources"> The data sources are identified.</li>
+        <li><input type="checkbox" id="output-variable"> Does the output variable depend on time?</li>
+        <li><input type="checkbox" id="record-groups"> Do the records belong to groups (e.g., multiple medical test
+            results
+            or images per patient, with each result or image represented by a single record) or are they independent?
+        </li>
+        <li><input type="checkbox" id="class-imbalance"> Were the data checked for class imbalance?</li>
+    </ul>
+
+    <h4 id="data-cleaning">Data Cleaning</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Each row corresponds to a single sample and vice versa.</li>
+        <li><input type="checkbox" id="own-column"> Each variable has its own column.</li>
+        <li><input type="checkbox" id="variable-combination"> Variables are sometimes combined. For example, a column
+            describing car transmissions may have string values like “6-cyl, RWD, conventional” and “4-cyl, AWD,
+            hybrid”.
+            The column should be separated into three separate variables, each with their own column.</li>
+        <li><input type="checkbox" id="consistent-format"> All values in each column are formatted consistently (e.g.,
+            state names are all spelled and capitalized in a consistent manner, dates are all formatted as YY-MM-DD).
+        </li>
+        <li><input type="checkbox" id="same-types"> All values in each column have the same types (e.g., categorical,
+            int, float).</li>
+        <li><input type="checkbox" id="same-units"> All values in each column have the same units (e.g., inches, USD).
+        </li>
+        <li><input type="checkbox" id="missing-values"> Any missing values are identified, handled appropriately, and
+            documented.</li>
+        <li><input type="checkbox" id="outliers"> Any outlier or unexpected values or records are identified, handled
+            appropriately, and documented.</li>
+    </ul>
+
+    <h4 id="visualizations">Visualizations</h4>
+    <ul>
+        <li><input type="checkbox" id="appropriate-plots"> Are the appropriate types of plots (e.g., histograms, line
+            plots, scatter plots, and box plots) used for the number and types of variables being compared?</li>
+        <li><input type="checkbox" id="axis-labels"> Are plot axes labeled appropriately?</li>
+        <li><input type="checkbox" id="font-sizes"> Are font sizes legible?</li>
+        <li><input type="checkbox" id="dpi"> Are the plots 150 DPI or higher?</li>
+    </ul>
+
+    <h4 id="communication">Communication</h4>
+    <ul>
+        <li><input type="checkbox" id="interpreted-explained"> Analyses were interpreted and explained in a way
+            understandable by a colleague who is familiar with the domain but not data science or statistics.</li>
+        <li><input type="checkbox" id="clear-conclusions"> Each conclusion was stated clearly.</li>
+        <li><input type="checkbox" id="effective-support"> Visuals and statistics were used effectively to support
+            conclusions.</li>
+    </ul>
+
+</body>
+
+</html>

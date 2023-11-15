@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ReSTful Service Checklist</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
+    <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding: 20px 100px;
+        }
+
+        .header-container {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<div class="header-container">
+    <div class="d-flex flex-column">
+        <h2>RESTful Service Checklist</h2>
+        <p>Developed by Dr. RJ Nowling, Milwaukee School of Engineering</p>
+        <p><a href="RESTful%20Service%20Checklist.docx">Download .docx</a></p>
+        <p><a href="restful-checklist.md">Download .md</a></p>
+    </div>
+</div>
+
+<h4 id="rest-interface">REST Interface</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Are best practices followed in the design of the REST interface
+        endpoints?</li>
+    <li><input type="checkbox" id="single-sample"> Are the appropriate REST &quot;verbs&quot; (e.g., PUT, GET, POST,
+        DELETE, and PATCH) used for each action?
+    </li>
+    <li><input type="checkbox" id="single-sample"> Are GET, PUT, PATCH, and DELETE endpoints idempotent?</li>
+    <li><input type="checkbox" id="single-sample"> Is the REST interface versioned?</li>
+    <li><input type="checkbox" id="single-sample"> Are the appropriate HTTP response codes used?</li>
+    <li><input type="checkbox" id="single-sample"> Does the interface at least meet level 2 of the Richardson maturity
+        model?</li>
+</ul>
+<h4 id="code">Code</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Does the implementation satisfy any provided requirements (e.g., in
+        an assignment description)?</li>
+    <li><input type="checkbox" id="single-sample"> Are inputs and outputs validated (e.g., using a library)?</li>
+    <li><input type="checkbox" id="single-sample"> Did you employ defensive programming techniques to proactively
+        identify and handle errors/unexpected
+        behaviors?</li>
+    <li><input type="checkbox" id="single-sample"> Does the internal organization of the software follow best practices
+        (e.g., loosely-coupled components with
+        single responsibilities, depending on interfaces rather than concrete implementations)?</li>
+    <li><input type="checkbox" id="single-sample"> Are resources closed and cleaned up after use (e.g., database
+        connections are closed)?</li>
+</ul>
+<h4 id="monitoring-and-alerting">Monitoring and Alerting</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Is some sort of logging strategy employed? If so, is structured
+        logging used?</li>
+    <li><input type="checkbox" id="single-sample"> Are any metrics captured? If so, is an endpoint available for
+        retrieving metrics?</li>
+    <li><input type="checkbox" id="single-sample"> Is a health check endpoint implemented? E.g., testing database
+        connectivity?</li>
+</ul>
+<h4 id="security">Security</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Are all secrets (e.g., usernames and passwords) passed via
+        environmental variables to avoid accidentally
+        committing files containing secrets to a repository or distributing them with release artifacts?</li>
+</ul>
+<h4 id="documentation">Documentation</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Is there a README.md in the GitHub repository?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for running the service, including installing
+        any dependencies, setting up a
+        database, etc.?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for the process for contributing changes to
+        the repository?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for the release process (if appropriate)?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for running provided tests?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for contacting the project or community
+        members (if appropriate)?</li>
+    <li><input type="checkbox" id="single-sample"> Are there instructions for how to report bugs (e.g., submit issues)?
+    </li>
+    <li><input type="checkbox" id="single-sample"> If a database is used, is the schema documented? Is a diagram
+        provided if sufficiently complex?</li>
+    <li><input type="checkbox" id="single-sample"> Is the internal architecture (e.g., major components/modules and
+        their relationships) documented?</li>
+    <li><input type="checkbox" id="single-sample"> Are the REST endpoints documented, including the action type,
+        expected input, and example output (e.g.,
+        following templates)?</li>
+</ul>
+<h4 id="bug-reports">Bug Reports</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Is a template for filing bug reports provided?</li>
+</ul>
+<h4 id="automated-tests">Automated Tests</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> Are automated smoke tests provided?</li>
+    <li><input type="checkbox" id="single-sample"> Is there a test for each endpoint?</li>
+</ul>
+<h4 id="license">License</h4>
+<ul>
+    <li><input type="checkbox" id="single-sample"> If the repository is public, is a license specified for the code?
+    </li>
+</ul>
+
+
+</html>

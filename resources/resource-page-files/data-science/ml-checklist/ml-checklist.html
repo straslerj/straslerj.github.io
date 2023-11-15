@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Machine Learning Checklist</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
+    <script src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding: 20px 100px;
+        }
+
+        .header-container {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-container">
+        <div class="d-flex flex-column">
+            <h2>Machine Learning Checklist</h2>
+            <p>Developed by Dr. RJ Nowling, Milwaukee School of Engineering</p>
+            <p><a href="ML%20Experiment%20Checklist.docx">Download .docx</a></p>
+            <p><a href="ml-checklist.md">Download .md</a></p>
+        </div>
+    </div>
+
+
+
+    <h4 id="data-review">Data Review</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> The data sources are identified.</li>
+        <li><input type="checkbox" id="single-sample"> Does the output variable depend on time?</li>
+        <li><input type="checkbox" id="single-sample"> Do the records belong to groups (e.g., multiple medical test
+            results
+            or images per patient, with each
+            result
+            or image represented by a single record) or are they independent?</li>
+        <li><input type="checkbox" id="single-sample"> Were the data checked for class imbalance?</li>
+    </ul>
+
+    <h4 id="data-cleaning">Data Cleaning</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Each row corresponds to a single sample and vice versa</li>
+        <li><input type="checkbox" id="single-sample"> Each variable has its own column<ul>
+                <li><input type="checkbox" id="single-sample"> Variables are sometimes combined. For example, a column
+                    describing car transmissions may have
+                    string
+                    values like “6-cyl, RWD, conventional” and “4-cyl, AWD, hybrid”. The column should be separated into
+                    three separate variables, each with their own column.</li>
+            </ul>
+        </li>
+        <li><input type="checkbox" id="single-sample"> All values in each column are formatted consistently (e.g., state
+            names are all spelled and capitalized
+            in a
+            consistent manner, dates are all formatted as YY-MM-DD)</li>
+        <li><input type="checkbox" id="single-sample"> All values in each column have the same types (e.g., categorical,
+            int, float)</li>
+        <li><input type="checkbox" id="single-sample"> All values in each column have the same units (e.g., inches, USD)
+        </li>
+        <li><input type="checkbox" id="single-sample"> Any missing values are identified, handled appropriately, and
+            documented</li>
+        <li><input type="checkbox" id="single-sample"> Any outlier or unexpected values or records are identified,
+            handled
+            appropriately, and documented</li>
+    </ul>
+
+    <h4 id="problem-definition">Problem Definition</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Output variable and type (e.g., continuous, categorical, discrete
+            counts, etc.) are stated</li>
+        <li><input type="checkbox" id="single-sample"> Any constraints on the output variable are stated (e.g., values
+            must
+            be positive or within a specific
+            range)
+        </li>
+        <li><input type="checkbox" id="single-sample"> Problem type (e.g., regression, classification, other) is
+            identified
+        </li>
+        <li><input type="checkbox" id="single-sample"> Does the customer require that the models achieve a minimum
+            performance threshold?</li>
+        <li><input type="checkbox" id="single-sample"> Are there any constraints around the model training and
+            deployment
+            (e.g., available memory or compute
+            power,
+            infrastructure costs, maximum run time for inference, programming language)?</li>
+    </ul>
+
+    <h4 id="experimental-setup">Experimental Setup</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Is it documented what data will be available at training and
+            inference time, respectively?</li>
+        <li><input type="checkbox" id="single-sample"> Will you use a train-test split, train-test-validation split, or
+            cross-fold validation?</li>
+        <li><input type="checkbox" id="single-sample"> Is the splitting consistent with what data will be available at
+            training and prediction time in the
+            real-world usage scenario?</li>
+        <li><input type="checkbox" id="single-sample"> Are the samples stratified by class label (classification) or
+            output
+            value (regression)?</li>
+        <li><input type="checkbox" id="single-sample"> If the problem is time dependent, are splits performed along the
+            time
+            dimension? Will all previous
+            windows
+            or only the previous window used for training?</li>
+        <li><input type="checkbox" id="single-sample"> If the records belong to groups (e.g., multiple images per
+            patient),
+            are entire groups assigned to the
+            same
+            split or window (e.g., records from the same group should not be in different splits)?</li>
+    </ul>
+
+    <h4 id="feature-engineering-and-transformation">Feature Engineering and Transformation</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Are continuous variables scaled (mean of 0, standard deviation of
+            1)?
+        </li>
+        <li><input type="checkbox" id="single-sample"> Are missing values imputed?</li>
+        <li><input type="checkbox" id="single-sample"> Are categorical variables one-hot encoded?</li>
+        <li><input type="checkbox" id="single-sample"> If transformations (e.g., standard scaler, text vectorization,
+            PCA /
+            SVD, etc.) are stateful, are the
+            parameters fit using only the training set?</li>
+    </ul>
+
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Model Training<ul>
+                <li><input type="checkbox" id="single-sample"> Did you pick models that are appropriate for the problem
+                    type
+                    and constraints on the output
+                    value?
+                </li>
+                <li><input type="checkbox" id="single-sample"> Did you pick models that can operate within the given
+                    resource requirements?</li>
+                <li><input type="checkbox" id="single-sample"> Were the models trained on the training set (and not the
+                    test
+                    set)?</li>
+                <li><input type="checkbox" id="single-sample"> If the data are imbalanced, was the training set
+                    rebalanced
+                    before the model was trained?</li>
+                <li><input type="checkbox" id="single-sample"> Did you tune any hyper-parameters (e.g., regularization
+                    type
+                    and strength, number of iterators,
+                    learning rate, etc.) using cross-fold validation on the training set or a validation set if doing a
+                    three-way split?</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4 id="model-selection-and-evaluation">Model Selection and Evaluation</h4>
+    <ul>
+        <li><input type="checkbox" id="single-sample"> Are the chosen metrics appropriate for the problem type?</li>
+        <li><input type="checkbox" id="single-sample"> If there is class imbalance, are the chosen metrics robust to it?
+        </li>
+        <li><input type="checkbox" id="single-sample"> Are the metrics interpreted correctly?</li>
+        <li><input type="checkbox" id="single-sample"> Are the predicted values within the expected range (e.g., no
+            negative
+            predictions when the output
+            variable
+            can only be positive)?</li>
+        <li><input type="checkbox" id="single-sample"> Is there evidence of bias or outlier predictions (e.g
+
+
+</body>
+
+</html>
