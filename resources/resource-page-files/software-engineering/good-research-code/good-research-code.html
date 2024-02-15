@@ -1,0 +1,687 @@
+<!DOCTYPE html><html><head>
+      <title>good-research-code</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/jakestrasler/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.11/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="notes-on-good-research-code-handbook">Notes on <em>Good Research Code Handbook</em> </h1>
+<p>The good research code handbook is written by Patrick Mineault and can be viewed <a href="https://goodresearch.dev">here</a>.</p>
+<p>This is my abridged version of the handbook and a reference point for me if I need one (though the goal is for all of this to be second-nature). The sections of notes will follow the sections in the book.</p>
+<p><em>The following ideas are not my own. Rather, they are those of Patrick Mineault. If an idea is my own, it will be denoted with a dagger, †.</em></p>
+<h2 id="table-of-contents">Table of Contents </h2>
+<ul>
+<li><a href="#notes-on-good-research-code-handbook">Notes on <em>Good Research Code Handbook</em></a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#setting-up-your-project">Setting up your project</a>
+<ul>
+<li><a href="#pick-a-name-and-create-a-folder-for-your-project">Pick a name and create a folder for your project</a></li>
+<li><a href="#initialize-a-git-repository-and-sync-to-github">Initialize a git repository and sync to GitHub</a></li>
+<li><a href="#set-up-a-virtual-environment">Set up a virtual environment</a>
+<ul>
+<li><a href="#conda">Conda</a></li>
+<li><a href="#pip-and-venv">Pip and venv</a></li>
+<li><a href="#conda-versus-pip">Conda versus pip</a></li>
+</ul>
+</li>
+<li><a href="#create-a-project-skeleton">Create a project skeleton</a>
+<ul>
+<li><a href="#data"><code>data/</code></a></li>
+<li><a href="#docs"><code>docs/</code></a></li>
+<li><a href="#results"><code>results/</code></a></li>
+<li><a href="#scripts"><code>scripts/</code></a></li>
+<li><a href="#src"><code>src/</code></a></li>
+<li><a href="#tests"><code>tests/</code></a></li>
+<li><a href="#gitignore"><code>.gitignore</code></a></li>
+<li><a href="#readmemd"><code>README.md</code></a></li>
+<li><a href="#environmentyml-or-requirementstxt"><code>environment.yml</code> (or <code>requirements.txt</code>)</a></li>
+</ul>
+</li>
+<li><a href="#install-a-project-package">Install a project package</a>
+<ul>
+<li><a href="#create-a-pip-installable-package">Create a pip-installable package</a></li>
+<li><a href="#alternative-to-pip-installable-packages">Alternative to pip-installable packages</a></li>
+</ul>
+</li>
+<li><a href="#using-the-true-neutral-cookiecutter">Using the true-neutral cookiecutter</a></li>
+</ul>
+</li>
+<li><a href="#keep-things-tidy">Keep things tidy</a>
+<ul>
+<li><a href="#use-the-style-guide">Use the style guide</a>
+<ul>
+<li><a href="#pep-8">PEP 8</a></li>
+<li><a href="#delete-dead-code">Delete dead code</a></li>
+<li><a href="#keep-jupyter-notebooks-tidy">Keep Jupyter notebooks tidy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#write-decoupled-code">Write decoupled code</a>
+<ul>
+<li><a href="#code-smells-and-spaghetti-code">Code smells and spaghetti code</a></li>
+<li><a href="#making-code-better">Making code better</a>
+<ul>
+<li><a href="#separate-concerns">Separate concerns</a></li>
+<li><a href="#use-pure-functions">Use pure functions</a></li>
+<li><a href="#avoid-side-effects">Avoid side effects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#testing-your-code">Testing your code</a>
+<ul>
+<li><a href="#lightweight-formal-tests-with-assert">Lightweight formal tests with <code>assert</code></a>
+<ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#testing-with-a-test-suite">Testing with a test suite</a></li>
+<li><a href="#a-hierarchy-of-tests">A hierarchy of tests</a></li>
+</ul>
+</li>
+<li><a href="#write-good-documentation">Write good documentation</a>
+<ul>
+<li><a href="#raise-errors">Raise errors</a></li>
+<li><a href="#type-hints">Type hints</a></li>
+<li><a href="#write-docstrings">Write docstrings</a></li>
+<li><a href="#publish-docs-on-readthedocs">Publish docs on Readthedocs</a></li>
+</ul>
+</li>
+<li><a href="#document-your-project">Document your project</a>
+<ul>
+<li><a href="#write-console-programs">Write console programs</a></li>
+<li><a href="#document-pipelines">Document pipelines</a>
+<ul>
+<li><a href="#commit-shell-files">Commit shell files</a></li>
+<li><a href="#document-pipelines-with-make">Document pipelines with make</a></li>
+<li><a href="#record-the-provenance-of-each-figure-and-table">Record the provenance of each figure and table</a></li>
+</ul>
+</li>
+<li><a href="#document-projects">Document projects</a>
+<ul>
+<li><a href="#write-a-readmemd-file">Write a <code>README.md</code> file</a></li>
+<li><a href="#write-markdown-docs">Write Markdown docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#make-coding-social">Make coding social</a>
+<ul>
+<li><a href="#pair-program">Pair program</a></li>
+<li><a href="#set-up-code-review-in-your-lab">Set up code review in your lab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h2 id="setting-up-your-project">Setting up your project </h2>
+<p>The broad steps to setting up an organized project are</p>
+<ol>
+<li>Pick a name and create a folder for your project</li>
+<li>Initialize a git repository and sync to GitHub*</li>
+<li>Set up a virtual environment</li>
+<li>Create a project skeleton</li>
+<li>Install a project package</li>
+</ol>
+<p>*† I tend to find it easier to create a git repository, clone it locally (<code>git clone https://&lt;repo_url&gt;</code>), and then proceed. This takes care  of the first step, as well.</p>
+<h3 id="pick-a-name-and-create-a-folder-for-your-project">Pick a name and create a folder for your project </h3>
+<ul>
+<li>Default structure of: <strong>one project == one folder == one repository</strong>.
+<ul>
+<li>Don't be afraid to create standalone projects for tools that are re-used across projects.</li>
+</ul>
+</li>
+<li>Make project names short and descriptive.
+<ul>
+<li>† Use snake_case naming conventions for project names (assuming a Python project.)</li>
+</ul>
+</li>
+<li><code>mkdir project_name</code></li>
+</ul>
+<h3 id="initialize-a-git-repository-and-sync-to-github">Initialize a git repository and sync to GitHub </h3>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ <span class="token builtin class-name">echo</span> <span class="token string">"# Project Name"</span> <span class="token operator">&gt;&gt;</span> README.md
+$ <span class="token function">git</span> init
+$ <span class="token function">git</span> <span class="token function">add</span> README.md
+$ <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"First commit -- adds README"</span>
+$ <span class="token function">git</span> branch <span class="token parameter variable">-M</span> main
+$ <span class="token function">git</span> remote <span class="token function">add</span> origin https://<span class="token operator">&lt;</span>repo_url<span class="token operator">&gt;</span>
+$ <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin main
+</code></pre><ul>
+<li>Commit to git regularly throughout the course of the project.</li>
+<li>Commits should be logically grouped.</li>
+</ul>
+<h3 id="set-up-a-virtual-environment">Set up a virtual environment </h3>
+<ul>
+<li>Virtual environment manage dependencies.
+<ul>
+<li>Specifics of which versions of software and packages are in use are contained by a virtual environment.
+<ul>
+<li>These specifics can be easily swapped, created, duplicated, or destroyed.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Software that can be used ot manage dependencies includes
+<ul>
+<li><code>conda</code></li>
+<li><code>pipenv</code></li>
+<li><code>poetry</code></li>
+<li><code>venv</code></li>
+<li><code>virtualenv</code></li>
+<li><code>asdf</code></li>
+<li><code>docker</code></li>
+<li>and more.
+<ul>
+<li>This is a matter of preference</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="conda">Conda </h4>
+<p>Below is how to set up a Conda package manager environment.</p>
+<p><strong>Creating and activating an environment</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>~/project_name$ conda create <span class="token parameter variable">--name</span> project_name <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.12</span>
+~/project_name$ conda activate project_name
+</code></pre><p><strong>Installing packages</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>project_name<span class="token punctuation">)</span> ~/project_name$ conda <span class="token function">install</span> pandas numpy scipy matplotlib seaborn
+</code></pre><p><strong>Export your environment</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>project_name<span class="token punctuation">)</span> ~/project_name$ conda <span class="token function">env</span> <span class="token builtin class-name">export</span> <span class="token operator">&gt;</span> environment.yml
+</code></pre><p>Then, you may consider committing this environment file:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>~/project_name$ <span class="token function">git</span> <span class="token function">add</span> environment.yml
+~/project_name$ <span class="token function">git</span> commit environment.yml <span class="token parameter variable">-m</span> <span class="token string">"Adds conda environment file"</span>
+~/project_name$ <span class="token function">git</span> push
+</code></pre><p>This file can then be used to recreate this environment:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ conda <span class="token function">env</span> create <span class="token parameter variable">--name</span> recoveredenv <span class="token parameter variable">--file</span> environment.yml
+</code></pre><p><em>Note that this will only work for the same operating system. It will not be portable to a different operating system. This is due to it documenting low-level, OS-specific packages. Manually adjust the file to account for this if portability is necessary.</em></p>
+<p><strong>Add dependencies to your environment</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>project_name<span class="token punctuation">)</span> ~/project_name$ conda <span class="token function">env</span> update <span class="token parameter variable">--prefix</span> ./env <span class="token parameter variable">--file</span> environment.yml <span class="token parameter variable">--prune</span>
+</code></pre><h4 id="pip-and-venv">Pip and venv </h4>
+<p><strong>Creating and activating an environment:</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>~/project_name$ python <span class="token parameter variable">-m</span> venv project_name-env
+~/project_name$ <span class="token builtin class-name">source</span> project_name-env/bin/activate
+</code></pre><p><strong>Installing packages</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>project_name-env<span class="token punctuation">)</span> ~/project_name$ pip <span class="token function">install</span> pandas numpy scipy matplotlib seaborn
+</code></pre><p><strong>Export your environment</strong></p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>project_name-env<span class="token punctuation">)</span> ~/project_name$ pip freeze <span class="token operator">&gt;</span> requirements.txt
+</code></pre><p>Then, you may consider committing this requirements file:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>~/project_name$ <span class="token function">git</span> <span class="token function">add</span> requirements.txt
+~/project_name$ <span class="token function">git</span> commit requirements.txt <span class="token parameter variable">-m</span> <span class="token string">"Adds pip requirements file"</span>
+~/project_name$ <span class="token function">git</span> push
+</code></pre><p>This file can then be used to recreate this environment:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ python <span class="token parameter variable">-m</span> venv recovered-env
+$ <span class="token builtin class-name">source</span> recovered-env/bin/activate
+<span class="token punctuation">(</span>recovered-env<span class="token punctuation">)</span> $ pip <span class="token function">install</span> <span class="token parameter variable">-r</span> requirements.txt
+</code></pre><p><em>Note the requirements.txt file does not distinguish between packages installed via pip or other package managers. If non-Python dependencies need to be documented separately, consider using additional tools or documentation.</em></p>
+<h4 id="conda-versus-pip">Conda versus pip </h4>
+<blockquote>
+<p>You can use pip inside of a conda environment. A big point of confusion is how conda relates to pip. For conda:<br>
+• Conda is both a package manager and a virtual environment manager<br>
+• Conda can install big, complicated-to-install, non-Python software, like gcc<br>
+• Not all Python packages can be installed through conda</p>
+<p>For pip:<br>
+• pip is just a package manager<br>
+• pip only installs Python packages<br>
+• pip can install every package on PyPI in addition to local packages</p>
+<p>Conda tracks which packages are pip installed and will include a special section in <code>environment.yml</code> for pip packages. However, installing pip packages may negatively affect conda’s ability to install conda packages correctly after the first pip install. Therefore, people generally recommend installing big conda packages first, then installing small pip packages second.</p>
+</blockquote>
+<h3 id="create-a-project-skeleton">Create a project skeleton </h3>
+<p>There is not a default standard for a Python project. The following is as good as any but feel free to tweak it to specific needs:</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>.
+├── data/
+├── docs/
+├── results/
+├── scripts/
+├── src/
+├── tests/
+├── .gitignore
+├── environment.yml (or requirements.txt)
+└── README.md
+</code></pre><pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ <span class="token function">mkdir</span> <span class="token punctuation">{</span>data, docs, results, scripts, src, tests<span class="token punctuation">}</span>
+</code></pre><h4 id="data"><code>data/</code> </h4>
+<p>A place for raw data. This doesn't typically get added to source control unless the datasets are small.</p>
+<h4 id="docs"><code>docs/</code> </h4>
+<p>Where documentation goes. Naming it <code>docs</code> makes publishing it through, say, GitHub pages, easier.</p>
+<h4 id="results"><code>results/</code> </h4>
+<p>Where you put test results including checkpoints, hdf5 files, pickle files, as well as figures and tables. If files are large don't add to source control.</p>
+<h4 id="scripts"><code>scripts/</code> </h4>
+<p>Python and bash scripts, Jupyter notebooks, etc.</p>
+<h4 id="src"><code>src/</code> </h4>
+<p>Reusable Python modules for the project. Code you would consider <code>import</code>ing.</p>
+<h4 id="tests"><code>tests/</code> </h4>
+<p>Where tests for your code go.</p>
+<h4 id="gitignore"><code>.gitignore</code> </h4>
+<p>A list of files that git should ignore.</p>
+<h4 id="readmemd"><code>README.md</code> </h4>
+<p>A description of your project, including installation instructions. What people will see on the top level of the repository.</p>
+<h4 id="environmentyml-or-requirementstxt"><code>environment.yml</code> (or <code>requirements.txt</code>) </h4>
+<p>Description of your environment.</p>
+<h3 id="install-a-project-package">Install a project package </h3>
+<p><em>This will make the project pip installable.</em></p>
+<h4 id="create-a-pip-installable-package">Create a pip-installable package </h4>
+<p>The steps for creating a locally pip installable package only involves a few steps:</p>
+<ol>
+<li><strong>Create a <code>setup.py</code> file</strong><pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> setuptools <span class="token keyword keyword-import">import</span> find_packages<span class="token punctuation">,</span> setup
+
+setup <span class="token punctuation">(</span>
+ name<span class="token operator">=</span><span class="token string">'src'</span><span class="token punctuation">,</span>
+ packages<span class="token operator">=</span>find_packages<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre>This should be done in the root (top level) of your project.</li>
+<li><strong>Create an <code>__init__.py</code> file</strong>
+<ol>
+<li>This goes in the <code>src</code> directory.</li>
+<li>It is empty.</li>
+<li>It allows <code>find_packages</code> to find the package.</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>~/project_name$ <span class="token function">touch</span> src/__init__.py
+</code></pre></li>
+<li><strong><code>pip install</code> your package</strong><pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ pip <span class="token function">install</span> <span class="token parameter variable">-e</span> <span class="token builtin class-name">.</span>
+</code></pre><ol>
+<li><code>.</code> indicates the package is being installed in the current directory.</li>
+<li><code>-e</code> indicates the package should be editable.
+<ol>
+<li>This way, if you change the files inside the <code>src</code> folder you don't need to re-install the package for your changes to be picked up by Python.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>Use the package</strong>
+<ol>
+<li>Once the package is locally installed it can be easily used <em>regardless of which directory you're in</em>.</li>
+<li>Example<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ <span class="token builtin class-name">echo</span> <span class="token string">"print('hello world')"</span> <span class="token operator">&gt;</span> src/hello_world.py
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ <span class="token builtin class-name">cd</span> scripts
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ python
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token function">import</span> src.hello_world
+hello world
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ <span class="token builtin class-name">cd</span> ~
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ python
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token function">import</span> src.helloworld
+hello world
+</code></pre></li>
+</ol>
+</li>
+<li><strong>(optional) Change the name of the package</strong>
+<ol>
+<li>To change from <code>src</code> to, say, <code>project_name</code>, simply<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ <span class="token function">mv</span> src project_name
+</code></pre></li>
+<li>If changes aren't automatically picked up, do<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ pip <span class="token function">install</span> <span class="token parameter variable">-e</span> <span class="token builtin class-name">.</span>
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<h4 id="alternative-to-pip-installable-packages">Alternative to pip-installable packages </h4>
+<p>This is a shortcut to make your code accessible to other files in different directories but is not the most future-proof method.</p>
+<p>By adding the <code>src</code> folder to your Python path you should be able to access the code anywhere:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> sys
+
+sys<span class="token punctuation">.</span>path<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'~/project_name/src'</span><span class="token punctuation">)</span>
+
+<span class="token keyword keyword-from">from</span> src<span class="token punctuation">.</span>lib <span class="token keyword keyword-import">import</span> cool_function
+</code></pre><h3 id="using-the-true-neutral-cookiecutter">Using the true-neutral cookiecutter </h3>
+<p>You can skip everything we just went over using the <code>cookiecutter</code> tool.</p>
+<p>As an example to do exactly what we did (there are other <code>cookiecutter</code> flavors, including the robust <a href="https://drivendata.github.io/cookiecutter-data-science/#directory-structure">Data Science <code>cookiecutter</code></a>):</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ pip <span class="token function">install</span> cookiecutter
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ cookiecutter gh:patrickmineault/true-neutral-cookiecutter
+</code></pre><div style="page-break-after: always;"></div>
+<h2 id="keep-things-tidy">Keep things tidy </h2>
+<h3 id="use-the-style-guide">Use the style guide </h3>
+<ul>
+<li>Snake case for variables and modules: <code>variable_name</code>, <code>cool_module.py</code></li>
+<li>Camel case for class name: <code>CoolClass</code></li>
+<li>Camel case with spaces for Jupyter notebook: <code>Cool Jupyter Notebook.ipynb</code></li>
+</ul>
+<h4 id="pep-8">PEP 8 </h4>
+<p>You could study the style guide. Or you could consider using a linter and/or a code formatter, such as</p>
+<ul>
+<li><code>flake8</code> (linter)</li>
+<li><code>pylint</code> (linter)</li>
+<li><code>black</code> (code formatter)</li>
+<li><code>ruff</code> (linter and code formatter; † personal favorite)</li>
+</ul>
+<h4 id="delete-dead-code">Delete dead code </h4>
+<p>Simply clean up dead code, at least from the main branch. Consider using <a href="https://github.com/jendrikseipp/vulture">Vulture</a> if there is a lot of dead code.</p>
+<h4 id="keep-jupyter-notebooks-tidy">Keep Jupyter notebooks tidy </h4>
+<p>This photo from the book adequatley summarizes a good Jupyter approach.</p>
+<p><img src="data:image/svg+xml;charset=utf-8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTIxLjI0NTltbSIKICAgaGVpZ2h0PSI4My4zMDk3MTVtbSIKICAgdmlld0JveD0iMCAwIDEyMS4yNDU5IDgzLjMwOTcxNSIKICAgdmVyc2lvbj0iMS4xIgogICBpZD0ic3ZnNSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS4xICgxOjEuMSsyMDIxMDUyNjE1MTcrY2U2NjYzYjNiNykiCiAgIHNvZGlwb2RpOmRvY25hbWU9Imp1cHl0ZXIuc3ZnIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3NyIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiCiAgICAgYm9yZGVyb3BhY2l0eT0iMS4wIgogICAgIGlua3NjYXBlOnBhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRvY3VtZW50LXVuaXRzPSJtbSIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4xODMwNTI3IgogICAgIGlua3NjYXBlOmN4PSIxNjYuOTQwOTkiCiAgICAgaW5rc2NhcGU6Y3k9IjIxMC44OTUwOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE1MjgiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iODM2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSI3MiIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMjciCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJsYXllcjEiIC8+CiAgPGRlZnMKICAgICBpZD0iZGVmczIiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTcuNTUzODYzNSwtMi44MDQwMTk1KSI+CiAgICA8ZwogICAgICAgaWQ9Imc0MTM3NyI+CiAgICAgIDxjaXJjbGUKICAgICAgICAgc3R5bGU9ImZpbGw6I2FmZGRlOTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MC4zMzU0MTgiCiAgICAgICAgIGlkPSJwYXRoMzEiCiAgICAgICAgIGN4PSIzNi41NTM4NjQiCiAgICAgICAgIGN5PSIzOC42NTM5MTUiCiAgICAgICAgIHI9IjI5IiAvPgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSIzNC4xMzE4MDIiCiAgICAgICAgIHk9IjIwLjU1NjQ1NiIKICAgICAgICAgaWQ9InRleHQxMjQ1Ij48dHNwYW4KICAgICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICAgIGlkPSJ0c3BhbjEyNDMiCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgICAgeD0iMzQuMTMxODAyIgogICAgICAgICAgIHk9IjIwLjU1NjQ1NiI+SU88L3RzcGFuPjwvdGV4dD4KICAgICAgPHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iMjEuNjM4NzA4IgogICAgICAgICB5PSIyOC41NTM1ODUiCiAgICAgICAgIGlkPSJ0ZXh0MjIzOSI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4yMjM3IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjIxLjYzODcwOCIKICAgICAgICAgICB5PSIyOC41NTM1ODUiPk1MIHRyYWluaW5nIHBpcGVsaW5lczwvdHNwYW4+PC90ZXh0PgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSIzMS4wOTk3MDMiCiAgICAgICAgIHk9IjU5LjM4ODE0MiIKICAgICAgICAgaWQ9InRleHQ5NjkxIj48dHNwYW4KICAgICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICAgIGlkPSJ0c3Bhbjk2ODkiCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgICAgeD0iMzEuMDk5NzAzIgogICAgICAgICAgIHk9IjU5LjM4ODE0MiI+ZnVuY3Rpb25zPC90c3Bhbj48L3RleHQ+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgIHg9IjE4LjA2NjM2NiIKICAgICAgICAgeT0iNTAuODI5NzA0IgogICAgICAgICBpZD0idGV4dDczOTMiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuNzM5MSIKICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgICB4PSIxOC4wNjYzNjYiCiAgICAgICAgICAgeT0iNTAuODI5NzA0Ij52aXN1YWxpemF0aW9uPC90c3Bhbj48L3RleHQ+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgIHg9IjQ3Ljg1NTA0NSIKICAgICAgICAgeT0iNTAuNzcyODYxIgogICAgICAgICBpZD0idGV4dDExMzAxIj48dHNwYW4KICAgICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICAgIGlkPSJ0c3BhbjExMjk5IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjQ3Ljg1NTA0NSIKICAgICAgICAgICB5PSI1MC43NzI4NjEiPndnZXQ8L3RzcGFuPjwvdGV4dD4KICAgICAgPHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iMjEuODY5MjQyIgogICAgICAgICB5PSI0Mi45MzYyNTYiCiAgICAgICAgIGlkPSJ0ZXh0MTI4ODkiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuMTI4ODciCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgICAgeD0iMjEuODY5MjQyIgogICAgICAgICAgIHk9IjQyLjkzNjI1NiI+bGl0ZXJhdGUgcHJvZ3JhbW1pbmc8L3RzcGFuPjwvdGV4dD4KICAgICAgPHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iMTkuODM5MDk0IgogICAgICAgICB5PSIzNS44NjUyNSIKICAgICAgICAgaWQ9InRleHQxNDQ0NyI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4xNDQ0NSIKICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgICB4PSIxOS44MzkwOTQiCiAgICAgICAgICAgeT0iMzUuODY1MjUiPmludGVyYWN0aXZlIGV4cGxhbmF0aW9uczwvdHNwYW4+PC90ZXh0PgogICAgPC9nPgogICAgPGcKICAgICAgIGlkPSJnNDEzOTUiPgogICAgICA8Y2lyY2xlCiAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmIzODA7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjAuMzM1NDE4IgogICAgICAgICBpZD0icGF0aDMxLTAiCiAgICAgICAgIGN4PSI5OS43OTk3NjciCiAgICAgICAgIGN5PSIzOC42NTM5MTUiCiAgICAgICAgIHI9IjI5IiAvPgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSI3OC43MDYxNDYiCiAgICAgICAgIHk9IjI1LjE3OTAwMSIKICAgICAgICAgaWQ9InRleHQxMjQ1LTgiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuMTI0My04IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9Ijc4LjcwNjE0NiIKICAgICAgICAgICB5PSIyNS4xNzkwMDEiPklPPC90c3Bhbj48L3RleHQ+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgIHg9IjgzLjY0MzUxNyIKICAgICAgICAgeT0iNjIuMDg2MzM0IgogICAgICAgICBpZD0idGV4dDIyMzktNSI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4yMjM3LTAiCiAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgICAgeD0iODMuNjQzNTE3IgogICAgICAgICAgIHk9IjYyLjA4NjMzNCI+TUwgdHJhaW5pbmcgcGlwZWxpbmVzPC90c3Bhbj48L3RleHQ+CiAgICAgIDxlbGxpcHNlCiAgICAgICAgIHN0eWxlPSJmaWxsOiNhZmRkZTk7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjAuMjI2MjM0IgogICAgICAgICBpZD0icGF0aDMxLTA0IgogICAgICAgICBjeD0iOTkuNjk3Mzg4IgogICAgICAgICBjeT0iMzguNTUxNTMzIgogICAgICAgICByeD0iMTkuOTUxOTY1IgogICAgICAgICByeT0iMTkuMTc1ODU4IiAvPgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSI5Mi45ODg3MzkiCiAgICAgICAgIHk9IjE2LjY5OTE3OSIKICAgICAgICAgaWQ9InRleHQ5NjkxLTkiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuOTY4OS02IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjkyLjk4ODczOSIKICAgICAgICAgICB5PSIxNi42OTkxNzkiPmZ1bmN0aW9uczwvdHNwYW4+PC90ZXh0PgogICAgICA8dGV4dAogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7bGV0dGVyLXNwYWNpbmc6MHB4O3dvcmQtc3BhY2luZzowcHg7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSI5MC43NDU5MTgiCiAgICAgICAgIHk9IjQ4Ljg1NzQ5NCIKICAgICAgICAgaWQ9InRleHQ3MzkzLTMiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuNzM5MS04IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjkwLjc0NTkxOCIKICAgICAgICAgICB5PSI0OC44NTc0OTQiPnZpc3VhbGl6YXRpb248L3RzcGFuPjwvdGV4dD4KICAgICAgPHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iMTEzLjg4NTI0IgogICAgICAgICB5PSIyMy4yNzkwMjYiCiAgICAgICAgIGlkPSJ0ZXh0MTEzMDEtNSI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4xMTI5OS02IgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjExMy44ODUyNCIKICAgICAgICAgICB5PSIyMy4yNzkwMjYiPndnZXQ8L3RzcGFuPjwvdGV4dD4KICAgICAgPHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iODMuNDk1NjEzIgogICAgICAgICB5PSIzNC4yMzI0NDUiCiAgICAgICAgIGlkPSJ0ZXh0MTI4ODktMSI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4xMjg4Ny0xIgogICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICAgIHg9IjgzLjQ5NTYxMyIKICAgICAgICAgICB5PSIzNC4yMzI0NDUiPmxpdGVyYXRlIHByb2dyYW1taW5nPC90c3Bhbj48L3RleHQ+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgIHg9IjgxLjQ3MzU1NyIKICAgICAgICAgeT0iNDEuNjg3MDMxIgogICAgICAgICBpZD0idGV4dDE0NDQ3LTUiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuMTQ0NDUtOSIKICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgICB4PSI4MS40NzM1NTciCiAgICAgICAgICAgeT0iNDEuNjg3MDMxIj5pbnRlcmFjdGl2ZSBleHBsYW5hdGlvbnM8L3RzcGFuPjwvdGV4dD4KICAgIDwvZz4KICAgIDxyZWN0CiAgICAgICBzdHlsZT0iZmlsbDojYWZkZGU5O3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgIGlkPSJyZWN0Mjg5NzQiCiAgICAgICB3aWR0aD0iNS44ODk5NTc5IgogICAgICAgaGVpZ2h0PSI1Ljg4OTk1NzkiCiAgICAgICB4PSI1Ni4xNzU5NjQiCiAgICAgICB5PSI3Mi44MDI1ODIiIC8+CiAgICA8dGV4dAogICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICB4PSI2Ni4wNTIzMyIKICAgICAgIHk9Ijc2LjkwMjgwOSIKICAgICAgIGlkPSJ0ZXh0MzA0ODgiPjx0c3BhbgogICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICBpZD0idHNwYW4zMDQ4NiIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjMuNTI3NzhweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICAgIHg9IjY2LjA1MjMzIgogICAgICAgICB5PSI3Ni45MDI4MDkiPmp1cHl0ZXI8L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0CiAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjQuMjMzMzNweDtsaW5lLWhlaWdodDoxLjI1O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2xldHRlci1zcGFjaW5nOjBweDt3b3JkLXNwYWNpbmc6MHB4O3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgIHg9IjI3LjYwNDU0OCIKICAgICAgIHk9IjUuODM0MzIyOSIKICAgICAgIGlkPSJ0ZXh0MzA0ODgtMTciPjx0c3BhbgogICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICBpZD0idHNwYW4zMDQ4Ni01IgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOjQuMjMzMzNweDtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgQm9sZCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzIgogICAgICAgICB4PSIyNy42MDQ1NDgiCiAgICAgICAgIHk9IjUuODM0MzIyOSI+Tm90IGlkZWFsPC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dAogICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0LjIzMzMzcHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICB4PSI5My41MDE0NSIKICAgICAgIHk9IjUuODM0MzIyOSIKICAgICAgIGlkPSJ0ZXh0MzA0ODgtMTctOSI+PHRzcGFuCiAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgIGlkPSJ0c3BhbjMwNDg2LTUtNiIKICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTo0LjIzMzMzcHg7Zm9udC1mYW1pbHk6QXJpYWw7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonQXJpYWwsIEJvbGQnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iOTMuNTAxNDUiCiAgICAgICAgIHk9IjUuODM0MzIyOSI+QmV0dGVyPC90c3Bhbj48L3RleHQ+CiAgICA8cmVjdAogICAgICAgc3R5bGU9ImZpbGw6I2ZmYjM4MDtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICBpZD0icmVjdDI4OTc0LTgiCiAgICAgICB3aWR0aD0iNS44ODk5NTc5IgogICAgICAgaGVpZ2h0PSI1Ljg4OTk1NzkiCiAgICAgICB4PSI1Ni4xNzU5NjQiCiAgICAgICB5PSI4MC4yMjM3NzgiIC8+CiAgICA8dGV4dAogICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXN0cmV0Y2g6bm9ybWFsO2ZvbnQtc2l6ZTozLjUyNzc4cHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpBcmlhbDstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidBcmlhbCwgTm9ybWFsJztmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICB4PSI2Ni4yMjE5ODUiCiAgICAgICB5PSI4NC4zMjQwMDUiCiAgICAgICBpZD0idGV4dDMwNDg4LTEiPjx0c3BhbgogICAgICAgICBzb2RpcG9kaTpyb2xlPSJsaW5lIgogICAgICAgICBpZD0idHNwYW4zMDQ4Ni0wIgogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6My41Mjc3OHB4O2ZvbnQtZmFtaWx5OkFyaWFsOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J0FyaWFsLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjI2NDU4MyIKICAgICAgICAgeD0iNjYuMjIxOTg1IgogICAgICAgICB5PSI4NC4zMjQwMDUiPnNjcmlwdHMgJmFtcDsgbW9kdWxlczwvdHNwYW4+PC90ZXh0PgogIDwvZz4KPC9zdmc+Cg==" alt="Jupyter notebook organization"></p>
+<p>Additionally, you should</p>
+<ul>
+<li>Make sure notebooks run top to bottom without errors.
+<ul>
+<li>Ideally, in a minute or less.</li>
+</ul>
+</li>
+<li>Be productive mixing modules and notebooks
+<ul>
+<li>To ensure a module is automatically reloaded in Jupyter whenever the module is changed, add these two magics:<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token operator">%</span>load_ext autoreload
+<span class="token operator">%</span>autoreload <span class="token number">2</span>
+</code></pre></li>
+</ul>
+</li>
+<li>Refactor comfortably
+<ul>
+<li>Move imports and function definitions to the top of your notebook.</li>
+<li>Delete cells with obsolete analyses from the bottom of the notebook.</li>
+<li>† If you want the notebook checked into Git consider moving it to the <a href="https://jupytext.readthedocs.io/en/latest/formats-scripts.html#the-percent-format">percent format</a>.<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ pip <span class="token function">install</span> jupytext
+<span class="token punctuation">(</span>env<span class="token punctuation">)</span> ~/project_name$ jupytext --set-formats ipynb,percent notebook.ipynb
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h2 id="write-decoupled-code">Write decoupled code </h2>
+<h3 id="code-smells-and-spaghetti-code">Code smells and spaghetti code </h3>
+<p>Code smells shoudl be avoided and include:</p>
+<ul>
+<li>Mysterious names
+<ul>
+<li>Variables have names which don't indicate their function.</li>
+</ul>
+</li>
+<li>Magic numbers
+<ul>
+<li>Unique values with unexplained meaning.</li>
+</ul>
+</li>
+<li>Duplicated code
+<ul>
+<li>Large portions of duplicated code with small tweaks.</li>
+</ul>
+</li>
+<li>Uncontrolled side effects and variable mutations
+<ul>
+<li>Code is written so that it's unclear where and when variables are changed.</li>
+</ul>
+</li>
+<li>Large functions
+<ul>
+<li>Big, unwieldy functions that do a little bit of everything.</li>
+</ul>
+</li>
+<li>High cyclomatic complexity
+<ul>
+<li>Lots of nested ifs and for loops</li>
+</ul>
+</li>
+<li>Globals
+<ul>
+<li>Using globals for things that don't strictly need to be global</li>
+</ul>
+</li>
+<li>Embedded configuration
+<ul>
+<li>Paths and filenames are hardcoded in ways that the code is not portable to another computer.</li>
+</ul>
+</li>
+</ul>
+<p><em>Spaghetti code</em> == code so tightly wound that when you pull on one strand, the entire thing unravels.</p>
+<h3 id="making-code-better">Making code better </h3>
+<h4 id="separate-concerns">Separate concerns </h4>
+<ul>
+<li>A function does one thing.
+<ul>
+<li><em>Make small functions!</em></li>
+</ul>
+</li>
+<li>A module assembles functions which all work towards the same goal.</li>
+<li>A class mostly modifies its own members rather than other objects.</li>
+</ul>
+<h4 id="use-pure-functions">Use pure functions </h4>
+<p>Pure functions follow the canonical data flow:</p>
+<ul>
+<li>the inputs come from the arguments</li>
+<li>the outputs are returned with the <code>return</code> statement</li>
+</ul>
+<p>and are considered stateless and deterministic. They are easy to reason about.</p>
+<h4 id="avoid-side-effects">Avoid side effects </h4>
+<p>A side effect is anything that happens outside the canonical data flow from arguments to return, including</p>
+<ul>
+<li>Modifying a global variable.</li>
+<li>Modifying a static local variable.</li>
+<li>Modifying an argument.</li>
+<li>Doing I/O, including printting to the console, drawing on the screen, or calling a remote server.</li>
+</ul>
+<blockquote>
+<p>Not every function with side effects is problematic, however.</p>
+</blockquote>
+<p>To have well-behaved side effects,</p>
+<ul>
+<li>Write functions which modify their arguments OR return values, but not both.</li>
+<li>Concentrate your I/O in their own functions rather than sprinkling them throughout the code.</li>
+<li>Use classes to encapsulate state rather than using stateful functions and globals.
+<ul>
+<li>Python classes use the convention that private variables, which shouldn't be modified from outside, start with an <code>_</code>.
+<ul>
+<li>For example, <code>self._x</code> denotes a class member <code>_x</code> which should be managed by the class itself.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h2 id="testing-your-code">Testing your code </h2>
+<h3 id="lightweight-formal-tests-with-assert">Lightweight formal tests with <code>assert</code> </h3>
+<p>† <em>Good for notebooks!</em></p>
+<p><code>assert</code> throws an error whenever the statement is false.</p>
+<h4 id="examples">Examples </h4>
+<p><strong>a.</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword keyword-assert">assert</span> <span class="token number">1</span> <span class="token operator">==</span> <span class="token number">0</span>
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text text"><code>Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt; 
+AssertionError
+</code></pre><p><strong>b.</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-def">def</span> <span class="token function">fib</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword keyword-if">if</span> x <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> <span class="token number">1</span> 
+  <span class="token keyword keyword-else">else</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> fib<span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fib<span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword keyword-if">if</span> __name__ <span class="token operator">==</span> ’__main__’<span class="token punctuation">:</span> <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">8</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">102334155</span>
+  <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"Tests passed"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ python fib.py
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"fib.py"</span>, line <span class="token number">8</span>, <span class="token keyword keyword-in">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span> assert fib<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+AssertionError
+</code></pre><h3 id="testing-with-a-test-suite">Testing with a test suite </h3>
+<p>Once you have a lot of tests it makes sense to group them into a test suite that gets run with a test runner. You can use <code>pytest</code> or <code>unittest</code>. The book focuses on the more common <code>pytest</code>.</p>
+<p>This is most easily shown through example:</p>
+<p>After installing <code>pytest</code> by running <code>pip install -U pytest</code>, create a file in <code>tests/</code> called <code>test_fib.py</code> that looks like:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> src<span class="token punctuation">.</span>fib <span class="token keyword keyword-import">import</span> fib
+<span class="token keyword keyword-import">import</span> pytest
+
+<span class="token keyword keyword-def">def</span> <span class="token function">test_typical</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">8</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">102334155</span>
+
+<span class="token keyword keyword-def">def</span> <span class="token function">test_edge_case</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword keyword-assert">assert</span> fib<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+
+<span class="token keyword keyword-def">def</span> <span class="token function">test_raises</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword keyword-with">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>NotImplementedError<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># checks that this error is raised</span>
+    fib<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token keyword keyword-with">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>NotImplementedError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fib<span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">)</span>
+</code></pre><p>Then, run the test suite:</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>$ pytest test_fib.py
+...
+  def fib_inner(x): 
+    nonlocal cache 
+      if x in cache:
+        return cache[x]
+&gt;     if x == 0:
+E     RecursionError: maximum recursion depth exceeded in comparison
+
+../src/fib.py:7: RecursionError
+============================= short test summary info ========================== FAILED test_fib.py::test_raises-RecursionError: maximum recursion depth exceed =========================== 1 failed, 2 passed in 1.18s ========================
+</code></pre><p>At this point the code can be fixed, the test suite ran again, and an output like</p>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>test_fib.py ...                                                           [100%] 
+================================ 3 passed in 0.02s =============================
+</code></pre><p>is seen.</p>
+<h3 id="a-hierarchy-of-tests">A hierarchy of tests </h3>
+<p>There are more types of tests than just unit tests:</p>
+<ul>
+<li><em>Static tests</em>: your editor parses and runs your code as you write it to figure out if it will crash</li>
+<li><em>Inline asserts</em>: test whether intermediate computations are as expected</li>
+<li><em>Unit tests</em>: test whether one function or unit of code works as expected</li>
+<li><em>Docstring tests</em>: unit tests embedded in docstrings</li>
+<li><em>Integration tests</em>: test whether multiple functions work correctly together</li>
+<li><em>Smoke tests</em>: test whether a large piece of code crashes at an intermediate stage</li>
+<li><em>Regression tests</em>: tests whether your code is producing the same outputs that it used to in previous versions</li>
+<li><em>End-to-end tests</em>: literally a robot clicking buttons to figure out if your application works as expected</li>
+</ul>
+<div style="page-break-after: always;"></div>
+<h2 id="write-good-documentation">Write good documentation </h2>
+<blockquote>
+<p>For many people, <em>documenting code</em> is synonymous with <em>commenting code</em>. That's a narrow view of documentation.</p>
+</blockquote>
+<h3 id="raise-errors">Raise errors </h3>
+<p>Raise errors in your code so that you know they will get read -- docstrings often aren't. Some common and generic errors to consider mixing in are <code>NotImplementedError</code>, <code>ValueError</code>, and <code>NameError</code>. You can also mix in the aforementioned <code>asserts</code> to make a block of code fail more gracefully if, for example, an input isn't the correct format.</p>
+<h3 id="type-hints">Type hints </h3>
+<p>Optionally-enforced type checking using decorators. These are a matter of preference (and to some Python purists are sacreligious) but they do increase documentation.</p>
+<h3 id="write-docstrings">Write docstrings </h3>
+<p>The three prevailing styles of docstrings are reST, Google, and NumPy. Pick one and stick to it (along with your colleagues). IDEs can parse and display these docstrings, which tends to be very helpful.</p>
+<blockquote>
+<p>Docstrings can age poorly. When your arguments change, it’s easy to forget to change the docstring accordingly. I prefer to wait until later in the development process when function interfaces are stable to start writing docstrings.</p>
+</blockquote>
+<h3 id="publish-docs-on-readthedocs">Publish docs on Readthedocs </h3>
+<p>Generating docs is easy with Sphinx:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> sphinx
+<span class="token builtin class-name">cd</span> docs
+sphinx <span class="token parameter variable">-quickstart</span>
+<span class="token function">make</span> html
+</code></pre><p>You can then publish your docs to Readthedocs by linking your repository. You can, of course, publish to other places as well, such as GitHub pages or netlify.</p>
+<blockquote>
+<p>Sphinx by default works for reST docstrings. It can also work for Google and NumPy docstrings with a plugin.</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+<h2 id="document-your-project">Document your project </h2>
+<h3 id="write-console-programs">Write console programs </h3>
+<p>Instead of commenting and un-commenting code, we can have different code paths execute depending on flags passed as command line arguments.</p>
+<p><code>argparse</code> makes this easy. Here is an example of a use of <code>argparse</code>:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> argparse 
+
+<span class="token keyword keyword-def">def</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token comment"># TODO: Implement a neural net here. </span>
+  <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>args<span class="token punctuation">.</span>model<span class="token punctuation">)</span> <span class="token comment"># Prints the model type.</span>
+
+<span class="token keyword keyword-if">if</span> __name__ <span class="token operator">==</span> ’__main__’<span class="token punctuation">:</span>
+  parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">"Train a neural net"</span><span class="token punctuation">)</span>
+  parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">" --model"</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Model type (resnet or alexnet)"</span><span class="token punctuation">)</span>
+  parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">" --niter"</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Number of iterations"</span><span class="token punctuation">)</span>
+  parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">" --in_dir"</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Input directory with images"</span><span class="token punctuation">)</span>
+  parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">" --out_dir"</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">"Output directory with trained model"</span><span class="token punctuation">)</span>
+  
+  args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
+  main<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>$ python train_net.py <span class="token parameter variable">-h</span>
+usage: train_net.py <span class="token punctuation">[</span> -h<span class="token punctuation">]</span> <span class="token parameter variable">--model</span> MODEL <span class="token punctuation">[</span> <span class="token parameter variable">--niter</span> NITER<span class="token punctuation">]</span> <span class="token parameter variable">--in_dir</span> IN_DIR <span class="token parameter variable">--out_dir</span>
+OUT_DIR
+
+Train a neural net
+
+optional arguments:
+-h, <span class="token parameter variable">--help</span>
+<span class="token parameter variable">--model</span> MODEL
+<span class="token parameter variable">--niter</span> NITER
+<span class="token parameter variable">--in_dir</span> IN_DIR
+<span class="token parameter variable">--out_dir</span> OUT_DIR Output directory with trained model
+</code></pre><h3 id="document-pipelines">Document pipelines </h3>
+<h4 id="commit-shell-files">Commit shell files </h4>
+<p>Once code is taking configuration as command line flags, a record of the flags that you used when you invoke your code should be kept. An easy way to do this is a shell file that contains multiple shell commands that are run one after the other.</p>
+<p>Here is an example shell file. Notice that it not only runs the code but it is also documentation of the pipeline:</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># This will cause bash to stop executing the script if there’s an error</span>
+<span class="token builtin class-name">set</span> <span class="token parameter variable">-e</span>
+
+<span class="token comment"># Download files</span>
+aws s3 <span class="token function">cp</span> s3://codebook -testbucket/images/ data/images <span class="token parameter variable">--recursive</span>
+
+<span class="token comment"># Train network</span>
+python scripts/train_net.py <span class="token parameter variable">--model</span> resnet <span class="token parameter variable">--niter</span> <span class="token number">100000</span> <span class="token parameter variable">--in_dir</span> data/images <span class="token punctuation">\</span>
+  <span class="token parameter variable">--out_dir</span> results/trained_model
+
+<span class="token comment"># Create output directory</span>
+<span class="token function">mkdir</span> results/figures/
+
+<span class="token comment"># Generate plots</span>
+python scripts/generate_plots.py <span class="token parameter variable">--in_dir</span> data/images <span class="token punctuation">\</span>
+  <span class="token parameter variable">--out_dir</span> results/figures/ <span class="token parameter variable">--ckpt</span> results/trained_model/model.ckpt
+</code></pre><h4 id="document-pipelines-with-make">Document pipelines with make </h4>
+<p>There are a lot of make options out there. Consider adding them as your pipeline grows. A makefile specifies both the inputs to each pipeline step and its outputs.</p>
+<p>† I have personally worked with and like <code>snakemake</code> for machine-learning projects.</p>
+<h4 id="record-the-provenance-of-each-figure-and-table">Record the provenance of each figure and table </h4>
+<p>Here is a nice shortcut to having figures and tables versioned with your codebase:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> git
+<span class="token keyword keyword-import">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword keyword-as">as</span> plt
+
+repo <span class="token operator">=</span> git<span class="token punctuation">.</span>Repo<span class="token punctuation">(</span>search_parent_directories<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+short_hash <span class="token operator">=</span> repo<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token builtin">object</span><span class="token punctuation">.</span>hexsha<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span>
+
+<span class="token comment"># Plotting code goes here...</span>
+plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span>f’figure<span class="token punctuation">.</span><span class="token punctuation">{</span>short_hash<span class="token punctuation">}</span><span class="token punctuation">.</span>png’<span class="token punctuation">)</span>
+</code></pre><p>This reduces ambiguity about how and when this figure was generated. The same can be done with any other type of results file.</p>
+<p>There are other, more full-featured tools that can do this in a much more robust fashion if that better meets your needs. For example, consider Wandb, Neptune, Gigantum, or datalad, to name a few.</p>
+<h3 id="document-projects">Document projects </h3>
+<h4 id="write-a-readmemd-file">Write a <code>README.md</code> file </h4>
+<p>At minimum, consider including</p>
+<ul>
+<li>A one-sentence description of your project</li>
+<li>A longer description of your project</li>
+<li>Installation instructions</li>
+<li>General orientation to the codebase and usage instructions • Links to papers</li>
+<li>Links to extended docs</li>
+<li>License</li>
+</ul>
+<p>and keep the filel up-to-date.</p>
+<h4 id="write-markdown-docs">Write Markdown docs </h4>
+<p>Writing notes in Markdown allows them to be extended to a wide variety of platforms for other's ingestion. It tends to vary by environment on just how much you need to document, but it saves yourself future work to write in Markdown.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="make-coding-social">Make coding social </h2>
+<h3 id="pair-program">Pair program </h3>
+<p>An effective method of sharng knowledge through active practice -- two programmers collaborate actively on a programming task. Traditionally, there is a driver, who physically types the code and thinks about micro-issues in teh code (tactics), and the navigator, who assists the driver in telling them what to write and focus on macro issues e.g., what a function should accomplish.</p>
+<h3 id="set-up-code-review-in-your-lab">Set up code review in your lab </h3>
+<p>† I think code reviews are essential for a team to work well.</p>
+<p>Code review is the practice of peer reviewing other people's code. Common ways to do this are through pull/merge requests. Alternatively, a code review meeting can be organized where everyone reads code and comments on it at once.</p>
+<hr>
+<p>This is the end of the document. I hope you found, and continue to find, it helpful.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
