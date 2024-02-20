@@ -49,14 +49,10 @@
     </nav>
 
     <section>
-        <header class="container">
-            <div style="padding: 10px;" class="d-flex align-items-center justify-content-center">
-                <div class="d-flex flex-column">
-                    <!-- <h1 class="font-weight-bold text-danger display-4">Personal</h1> -->
-
-                </div>
+        <!-- <header class="container">
+            <div style="padding: 0px;" class="d-flex align-items-center justify-content-center">
             </div>
-        </header>
+        </header> -->
     </section>
     <section>
         <style>
@@ -64,25 +60,27 @@
                 box-sizing: border-box;
             }
 
-            body {
-                margin: 0;
-            }
-
             .column {
                 width: 100%;
                 padding: 10px;
+                box-sizing: border-box;
             }
 
             /* Style the images inside the grid */
             .column img {
                 width: 100%;
                 height: auto;
+                display: block;
+                /* Remove any extra space below images */
+                margin: 0 auto;
+                /* Center images within their container */
             }
 
             /* The image container with caption */
             .container {
                 position: relative;
                 overflow: hidden;
+                padding: 0;
             }
 
             /* Expanding image text */
@@ -92,9 +90,32 @@
                 left: 0;
                 width: 100%;
                 padding: 10px;
-                background: rgba(0, 0, 0, 0.7);
+                /* Adjust the padding as needed */
+                background: rgba(0, 0, 0, 0.3);
                 color: white;
                 text-align: center;
+            }
+
+            .gallery-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-image {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .gallery-caption {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            body {
+                margin: 0;
+                overflow-x: hidden;
+                /* Prevent horizontal scrolling */
             }
 
             /* Responsive layout - 2 images per row on small screens, 4 on medium screens, and 6 on large screens */
@@ -103,7 +124,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
-                    margin: 0 -5px;
+                    margin: 0 10px;
                 }
 
                 .column {
@@ -139,126 +160,128 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
+                <div class="gallery-container">
                     <div class="row">
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/running2.jpeg"
-                                    alt="The Fourth of July Firecracker race in Gladstone, MI. 2022">
-                                <div class="imgtext">The Fourth of July Firecracker race in Gladstone, MI. 2022</div>
+                        <div class="row">
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/running2.jpeg"
+                                        alt="The Fourth of July Firecracker race in Gladstone, MI. 2022">
+                                    <div class="imgtext">The Fourth of July Firecracker race in Gladstone, MI. 2022
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/disc.JPG" alt="Disc golf with a view. Florence, WI.">
-                                <div class="imgtext">Disc golf with a view. Florence, WI.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/disc.JPG" alt="Disc golf with a view. Florence, WI.">
+                                    <div class="imgtext">Disc golf with a view. Florence, WI.</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/drone.JPG" alt="Picture taken with my drone."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Picture taken with my drone.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/drone.JPG" alt="Picture taken with my drone."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Picture taken with my drone.</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/drone.jpeg" alt="Picture taken with my drone."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Picture taken with my drone.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/drone.jpeg" alt="Picture taken with my drone."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Picture taken with my drone.</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/drone2.JPG" alt="Picture taken with my drone."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Picture taken with my drone.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/drone2.JPG" alt="Picture taken with my drone."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Picture taken with my drone.</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/charleston.JPG" alt="Visiting Charleston, SC."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Visiting Charleston, SC.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/charleston.JPG" alt="Visiting Charleston, SC."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Visiting Charleston, SC.</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/hiking.jpeg" alt="Hiking at Devil's Lake in Baraboo, WI."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Hiking at Devil's Lake in Baraboo, WI.</div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/hiking.jpeg" alt="Hiking at Devil's Lake in Baraboo, WI."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Hiking at Devil's Lake in Baraboo, WI.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/packers.jpeg" alt="Packers game, fall 2022."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Packers game, fall 2022.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/travel.jpeg"
+                                        alt="Visiting Tonto National Forest, Phoenix, AZ." style="width:100%"
+                                        onclick="myFunction(this);">
+                                    <div class="imgtext">Visiting Tonto National Forest, Phoenix, AZ.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/views.JPG" alt="A great view in Marquette, MI."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">A great view in Marquette, MI.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/grad-with-mckayla.jpeg" alt="Graduation. Spring 2023"
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Graduation. Spring 2023.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/keith.jpeg"
+                                        alt="Keith Urban in Escanaba, MI. Summer 2023" style="width:100%"
+                                        onclick="myFunction(this);">
+                                    <div class="imgtext">Keith Urban in Escanaba, MI. Summer 2023.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/st-pete.jpeg" alt="St. Petersburg, FL. Spring Break 2023"
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">St. Petersburg, FL. Spring Break 2023.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/friends.jpeg" alt="My friend Jake's wedding."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">My friend Jake's wedding.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/ben-isabel-wedding.jpeg" alt="The Kelly's wedding."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">The Kelly's wedding.</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img src="resources/images/family-grad.jpeg" alt="Graduation. Spring 2023."
+                                        style="width:100%" onclick="myFunction(this);">
+                                    <div class="imgtext">Graduation. Spring 2023.</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/packers.jpeg" alt="Packers game, fall 2022."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Packers game, fall 2022.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/travel.jpeg"
-                                    alt="Visiting Tonto National Forest, Phoenix, AZ." style="width:100%"
-                                    onclick="myFunction(this);">
-                                <div class="imgtext">Visiting Tonto National Forest, Phoenix, AZ.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/views.JPG" alt="A great view in Marquette, MI."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">A great view in Marquette, MI.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/grad-with-mckayla.jpeg" alt="Graduation. Spring 2023"
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Graduation. Spring 2023.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/keith.jpeg" alt="Keith Urban in Escanaba, MI. Summer 2023"
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Keith Urban in Escanaba, MI. Summer 2023.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/st-pete.jpeg" alt="St. Petersburg, FL. Spring Break 2023"
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">St. Petersburg, FL. Spring Break 2023.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/friends.jpeg" alt="My friend Jake's wedding."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">My friend Jake's wedding.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/ben-isabel-wedding.jpeg" alt="The Kelly's wedding."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">The Kelly's wedding.</div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="container">
-                                <img src="resources/images/family-grad.jpeg" alt="Graduation. Spring 2023."
-                                    style="width:100%" onclick="myFunction(this);">
-                                <div class="imgtext">Graduation. Spring 2023.</div>
-                            </div>
-                        </div>
-                    </div>
 
             </section>
 
