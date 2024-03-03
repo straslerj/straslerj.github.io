@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Useful Data Science Plots</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="useful-data-science-plots">Useful Data Science Plots</h1>
+<p>This is a collection of plots that I have found useful for data science. This list will be continuoulsy updated.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#kolmogorov-smirnov-plot">Kolmogorov-Smirnov Plot</a></li>
+<li><a href="#shap-plot">SHAP Plot</a></li>
+<li><a href="#qq-plot">QQ Plot</a></li>
+<li><a href="#cumulative-explained-variance-plot">Cumulative Explained Variance Plot</a></li>
+<li><a href="#roc-curve">ROC Curve</a></li>
+<li><a href="#precision-recall-curve">Precision-Recall Curve</a></li>
+<li><a href="#elbow-curve">Elbow Curve</a></li>
+</ul>
+<h2 id="kolmogorov-smirnov-plot">Kolmogorov-Smirnov Plot</h2>
+<h3 id="use-case">Use Case</h3>
+<p>Compare the cumulative distributions of two datasets. It is often employed to test whether a sample is drawn from a particular distribution.</p>
+<h3 id="how-it-works">How it Works</h3>
+<p>Plots the cumulative distribution functions of two datasets and visually compares them.</p>
+<h3 id="example">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> ks_2samp
+
+<span class="hljs-comment"># Example data</span>
+data1 = np.random.normal(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>)
+data2 = np.random.normal(<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>)
+
+<span class="hljs-comment"># KS test</span>
+ks_statistic, ks_p_value = ks_2samp(data1, data2)
+
+<span class="hljs-comment"># KS plot</span>
+plt.plot(np.sort(data1), np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(data1), endpoint=<span class="hljs-literal">False</span>), label=<span class="hljs-string">&#x27;Data 1&#x27;</span>)
+plt.plot(np.sort(data2), np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(data2), endpoint=<span class="hljs-literal">False</span>), label=<span class="hljs-string">&#x27;Data 2&#x27;</span>)
+plt.title(<span class="hljs-string">f&#x27;KS Statistic: <span class="hljs-subst">{ks_statistic}</span>, p-value: <span class="hljs-subst">{ks_p_value}</span>&#x27;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/ks.png" alt="alt text"></p>
+<h2 id="shap-plot">SHAP Plot</h2>
+<h3 id="use-case-1">Use Case</h3>
+<p>Used to understand the impact of each feature on a model's output (feature importance).</p>
+<h3 id="how-it-works-1">How it Works</h3>
+<p>SHAP (SHapely Additive exPlanations) values quanitify the contributions of each feature to the prediction for a specific instance.</p>
+<h3 id="example-1">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> shap
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestClassifier
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_breast_cancer
+
+<span class="hljs-comment"># Example data</span>
+data = load_breast_cancer()
+X, y = data.data, data.target
+
+<span class="hljs-comment"># Train a model</span>
+model = RandomForestClassifier()
+model.fit(X, y)
+
+<span class="hljs-comment"># SHAP values</span>
+explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X)
+
+<span class="hljs-comment"># Summary plot</span>
+shap.summary_plot(shap_values, X, feature_names=data.feature_names)
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/shap.png" alt="alt text"></p>
+<h2 id="qq-plot">QQ Plot</h2>
+<h3 id="use-case-2">Use Case</h3>
+<p>Used to assess whether a dataset follows a particular theoretical distribution (e.g., normal distribution).</p>
+<h3 id="how-it-works-2">How it Works</h3>
+<p>Compares the quantiles of the observed data against the quantiles of the theoretical distribution.</p>
+<h3 id="example-2">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># Example data</span>
+data = np.random.normal(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>)
+
+<span class="hljs-comment"># QQ plot</span>
+sm.qqplot(data, line=<span class="hljs-string">&#x27;45&#x27;</span>)
+plt.title(<span class="hljs-string">&#x27;QQ Plot&#x27;</span>)
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/qq.png" alt="alt text"></p>
+<h2 id="cumulative-explained-variance-plot">Cumulative Explained Variance Plot</h2>
+<h3 id="use-case-3">Use Case</h3>
+<p>Used in principal component analysis to visualize the cumulative explained variance by each principal component.</p>
+<h3 id="how-it-works-3">How it Works</h3>
+<p>Shows the cumulative proportion of variance explained by each principal component.</p>
+<h3 id="example-3">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.decomposition <span class="hljs-keyword">import</span> PCA
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris
+
+<span class="hljs-comment"># Example data</span>
+data = load_iris()
+X = data.data
+
+<span class="hljs-comment"># PCA</span>
+pca = PCA()
+pca.fit(X)
+
+<span class="hljs-comment"># Cumulative explained variance plot</span>
+plt.plot(np.cumsum(pca.explained_variance_ratio_))
+plt.xlabel(<span class="hljs-string">&#x27;Number of Principal Components&#x27;</span>)
+plt.ylabel(<span class="hljs-string">&#x27;Cumulative Explained Variance&#x27;</span>)
+plt.title(<span class="hljs-string">&#x27;Cumulative Explained Variance Plot&#x27;</span>)
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/cev.png" alt="alt text"></p>
+<h2 id="roc-curve">ROC Curve</h2>
+<h3 id="use-case-4">Use Case</h3>
+<p>Used to evaluate the performance of a binary classification model across different threshold settings.</p>
+<h3 id="how-it-works-4">How it Works</h3>
+<p>Plots the true positive rate (sensitivity) against the false positive rate (1 - specificity).</p>
+<h3 id="example-4">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> roc_curve, auc
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># Example data</span>
+y_true = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]
+y_scores = [<span class="hljs-number">0.1</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.7</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.9</span>, <span class="hljs-number">0.5</span>]
+
+<span class="hljs-comment"># Compute ROC curve and AUC</span>
+fpr, tpr, _ = roc_curve(y_true, y_scores)
+roc_auc = auc(fpr, tpr)
+
+<span class="hljs-comment"># Plot ROC curve</span>
+plt.plot(fpr, tpr, color=<span class="hljs-string">&#x27;darkorange&#x27;</span>, lw=<span class="hljs-number">2</span>, label=<span class="hljs-string">f&#x27;AUC = <span class="hljs-subst">{roc_auc:<span class="hljs-number">.2</span>f}</span>&#x27;</span>)
+plt.plot([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], color=<span class="hljs-string">&#x27;navy&#x27;</span>, lw=<span class="hljs-number">2</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>)
+plt.xlabel(<span class="hljs-string">&#x27;False Positive Rate&#x27;</span>)
+plt.ylabel(<span class="hljs-string">&#x27;True Positive Rate&#x27;</span>)
+plt.title(<span class="hljs-string">&#x27;ROC Curve&#x27;</span>)
+plt.legend(loc=<span class="hljs-string">&#x27;lower right&#x27;</span>)
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/roc.png" alt="alt text"></p>
+<h2 id="precision-recall-curve">Precision-Recall Curve</h2>
+<h3 id="use-case-5">Use Case</h3>
+<p>Used to evaluate the performance of a binary classification model, especially when dealing with imbalanced datasets.</p>
+<h3 id="how-it-works-5">How it Works</h3>
+<p>Plots precision against recall for different threshold settings.</p>
+<h3 id="example-5">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> make_classification
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LogisticRegression
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> precision_recall_curve, auc
+
+<span class="hljs-comment"># Create a synthetic imbalanced dataset</span>
+X, y = make_classification(
+    n_samples=<span class="hljs-number">5000</span>, n_features=<span class="hljs-number">50</span>, n_classes=<span class="hljs-number">2</span>, weights=[<span class="hljs-number">0.95</span>, <span class="hljs-number">0.05</span>], random_state=<span class="hljs-number">42</span>
+)
+
+<span class="hljs-comment"># Split the dataset into training and testing sets</span>
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>
+)
+
+<span class="hljs-comment"># Train a logistic regression model with a stronger regularization</span>
+model = LogisticRegression(C=<span class="hljs-number">0.01</span>)
+model.fit(X_train, y_train)
+
+<span class="hljs-comment"># Make predictions on the test set</span>
+y_scores = model.predict_proba(X_test)[:, <span class="hljs-number">1</span>]
+
+<span class="hljs-comment"># Compute a precision-recall curve</span>
+precision, recall, _ = precision_recall_curve(y_test, y_scores, pos_label=<span class="hljs-number">1</span>)
+pr_auc = auc(recall, precision)
+
+<span class="hljs-comment"># Plot the precision-recall curve</span>
+plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">6</span>))
+plt.plot(recall, precision, label=<span class="hljs-string">f&quot;PR AUC = <span class="hljs-subst">{pr_auc:<span class="hljs-number">.2</span>f}</span>&quot;</span>, color=<span class="hljs-string">&quot;b&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Recall&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Precision&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Smoothed Precision-Recall Curve&quot;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/pr.png" alt="alt text"></p>
+<h2 id="elbow-curve">Elbow Curve</h2>
+<h3 id="use-case-6">Use Case</h3>
+<p>Used in clustering to determine the optimal number of clusters (<em>k</em>).</p>
+<h3 id="how-it-works-6">How it Works</h3>
+<p>Plots the within-cluster sum of squares (or other metrics) for different values of <em>k</em>.</p>
+<h3 id="example-6">Example</h3>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris
+
+<span class="hljs-comment"># Example data</span>
+iris = load_iris()
+X = iris.data
+
+<span class="hljs-comment"># Elbow curve</span>
+wcss = []
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>):
+    kmeans = KMeans(
+        n_clusters=i, init=<span class="hljs-string">&quot;k-means++&quot;</span>, max_iter=<span class="hljs-number">300</span>, n_init=<span class="hljs-number">10</span>, random_state=<span class="hljs-number">0</span>
+    )
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+
+<span class="hljs-comment"># Plot elbow curve</span>
+plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>), wcss)
+plt.xlabel(<span class="hljs-string">&quot;Number of Clusters&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Within-Cluster Sum of Squares (WCSS)&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Elbow Curve&quot;</span>)
+plt.show()
+</code></pre>
+<p><img src="file:////Users/jakestrasler/Downloads/useful-data-science-plots/elbow.png" alt="alt text"></p>
+
+            
+            
+        </body>
+        </html>
