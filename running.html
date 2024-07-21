@@ -18,6 +18,10 @@
     ## General Outline
 
     *Not training for a specific event.*
+
+    If workout date is odd-numbered, do an **R** workout. If even-numbered, do an **I** workout.
+
+    Assume 15 minutes for warmup + cooldown.
 </md-block>
 
 <style type="text/css">
@@ -99,7 +103,8 @@
             <td class="tg-c3ow"><span style="font-style:italic">Lift</span><br></td>
             <td class="tg-c3ow"><span style="font-style:italic">Lift</span><br></td>
             <td class="tg-c3ow"><span style="font-style:italic">Lift</span></td>
-            <td class="tg-baqh">Recovery Run<br><span style="font-style:italic">or</span><br>Tempo<br></td>
+            <td class="tg-baqh">Recovery Run<br><span style="font-style:italic">or</span><br>Tempo (20
+                minutes at T-pace)<br></td>
             <td class="tg-baqh">Long Run</td>
         </tr>
     </tbody>
@@ -153,46 +158,265 @@
             vertical-align: top
         }
     </style>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-baqh {
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-amwm {
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
     <table class="tg">
         <thead>
             <tr>
-                <th class="tg-7btt">Description</th>
-                <th class="tg-7btt">Time<br>(not incl. warmup)</th>
+                <th class="tg-amwm">Type</th>
+                <th class="tg-amwm">Description</th>
+                <th class="tg-amwm">Time<br>(not incl. warmup)</th>
+                <th class="tg-baqh"><span style="font-weight:bold">Name on Watch</span></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="tg-c3ow"><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">R-1</span><br><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">---</span><br><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">3 sets of:</span><br><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">2 x 200 + 1 x 400 at
-                        R-pace</span><br><span style="font-weight:400;font-style:normal;text-decoration:none">(may be
-                        hills)</span><br>Equal recovery</td>
-                <td class="tg-c3ow">16:00</td>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 sets of:<br>2 x 200 + 1 x 400 at R-pace<br>(may be hills)<br>Equal recovery</td>
+                <td class="tg-baqh">16:00</td>
+                <td class="tg-baqh">R-1</td>
             </tr>
             <tr>
-                <td class="tg-c3ow"><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">R-2</span><br><span
-                        style="font-weight:400;font-style:normal;text-decoration:none">---</span><br>5 x 400 at
-                    R-pace<br><span style="font-weight:400;font-style:normal;text-decoration:none">(may be
-                        hills)</span><br>Equal recovery</td>
-                <td class="tg-c3ow">13:30</td>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">6 x 400 at R-pace<br>(may be hills)<br>Equal recovery</td>
+                <td class="tg-baqh">14:30</td>
+                <td class="tg-baqh">R-2</td>
             </tr>
             <tr>
-                <td class="tg-c3ow"></td>
-                <td class="tg-c3ow"></td>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 x 800 increasing speed:<br>first a little slower than 1500 race pace,<br>second at
+                    1500 race pace,<br>last 2-3 seconds faster than race pace,<br>4 x 200 at 800 race pace<br>Equal
+                    recovery
+                </td>
+                <td class="tg-baqh">20:00</td>
+                <td class="tg-baqh">R-4</td>
             </tr>
             <tr>
-                <td class="tg-c3ow"></td>
-                <td class="tg-c3ow"></td>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 sets of:<br>2 x 200 + 1 x 800 at R-pace<br>Equal recovery</td>
+                <td class="tg-baqh">16:00</td>
+                <td class="tg-baqh">R-5</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">I</td>
+                <td class="tg-baqh">3 sets of:<br>2 min hard + 1 min easy + 1 min hard + <br>30 sec easy + 30 sec hard +
+                    30
+                    sec easy</td>
+                <td class="tg-baqh">16:30</td>
+                <td class="tg-baqh">I-1</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">I</td>
+                <td class="tg-baqh">3 sets of:<br>4 min I-pace + 3 min easy</td>
+                <td class="tg-baqh">21:00</td>
+                <td class="tg-baqh">I-2</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">I</td>
+                <td class="tg-baqh">3 sets of:<br>1200 at I-pace with 3 min recovery</td>
+                <td class="tg-baqh">24:00</td>
+                <td class="tg-baqh">I-3</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">I</td>
+                <td class="tg-baqh">4 sets of:<br>3 min at I-pace + 1 min easy</td>
+                <td class="tg-baqh">16:00</td>
+                <td class="tg-baqh">I-4</td>
             </tr>
         </tbody>
     </table>
 
     #### 30 to 45 Minutes
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-baqh {
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-amwm {
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
+    <table class="tg">
+        <thead>
+            <tr>
+                <th class="tg-amwm">Type</th>
+                <th class="tg-amwm">Description</th>
+                <th class="tg-amwm">Time<br>(not incl. warmup)</th>
+                <th class="tg-baqh"><span style="font-weight:bold">Name on Watch</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">2 sets of:<br>1 x 800 + 2 x 400 + 4 x 200 at R-pace<br>Full recoveries between
+                    each
+                    rep</td>
+                <td class="tg-baqh">32:00</td>
+                <td class="tg-baqh">R-3</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 sets of:<br>1 x 800 + 1 x 400 + 2 x 200 at R-pace<br>Equal recovery</td>
+                <td class="tg-baqh">31:00</td>
+                <td class="tg-baqh">R-6</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 sets of:<br>1 x 800 + 1 x 400 + 2 x 200 at
+                    R-pace<br>Equal
+                    recovery each rep</td>
+                <td class="tg-baqh">32:00</td>
+                <td class="tg-baqh">R-7</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">Mix</td>
+                <td class="tg-baqh">4 x 1000 at T-pace (1/2 time recovery) +<br>2 x 1200 at I-pace (1/2 time recovery)+
+                    <br>4 x 200 at R-pace (full recovery)
+                </td>
+                <td class="tg-baqh">38:45</td>
+                <td class="tg-baqh">Mix-1</td>
+            </tr>
+        </tbody>
+    </table>
 
     #### 45+ Minutes
+
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-baqh {
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-amwm {
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
+    <table class="tg">
+        <thead>
+            <tr>
+                <th class="tg-amwm">Type</th>
+                <th class="tg-amwm">Description</th>
+                <th class="tg-amwm">Time<br>(not incl. warmup)</th>
+                <th class="tg-baqh"><span style="font-weight:bold">Name on Watch</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-baqh">R</td>
+                <td class="tg-baqh">3 sets of:<br>1 x 800 + 2 x 400 + 4 x 200 at R-pace<br>Full recoveries between
+                    each
+                    rep</td>
+                <td class="tg-baqh">48:00</td>
+                <td class="tg-baqh">R-3</td>
+            </tr>
+            <tr>
+                <td class="tg-baqh">Mix</td>
+                <td class="tg-baqh">3 sets of:<br>2 x 200 at R-pace + 1 x 1000 at T-pace +<br>4 x 200 at R-pace<br>Equal
+                    recovery</td>
+                <td class="tg-baqh">48:00</td>
+                <td class="tg-baqh">Mix-2</td>
+            </tr>
+        </tbody>
+    </table>
 
     ### Training Intensities
 
@@ -202,6 +426,8 @@
     - **T**: *400*: 94 *1000*: 3:56 *Mile*: 6:20
     - **I**: *400*: 87 *1000*: 3:37 *1200*: 4:21
     - **R**: *200*: 40 *400*: 81
+    - **1500 Race Pace**: *800*: 2:40
+    - **800 Race Pace**: *200*: 34
 
     ## Old Plans
 
