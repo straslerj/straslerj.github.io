@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firecracker 5-Mile — Training Plan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f172a; --navy2: #1e293b; --slate: #334155; --muted: #64748b;
+    --border: #e2e8f0; --bg: #f8fafc; --white: #ffffff;
+    --p1: #2563eb; --p2: #ea580c; --p3: #dc2626; --p4: #7c3aed;
+    --rest-bg: #f1f5f9; --easy-bg: #eff6ff; --long-bg: #f0fdf4;
+    --quality-bg: #fff7ed; --race-bg: #fefce8;
+    --rest-bd: #cbd5e1; --easy-bd: #bfdbfe; --long-bd: #bbf7d0;
+    --quality-bd: #fed7aa; --race-bd: #fde68a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--navy); font-size: 14px; line-height: 1.5; }
+  h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; }
+
+  .hero { background: var(--navy); color: white; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -60px; top: -60px; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .hero-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+  .hero h1 { font-size: 52px; font-weight: 900; line-height: 1; margin-bottom: 6px; letter-spacing: -1px; }
+  .hero h1 span { color: #fbbf24; }
+  .hero-sub { font-size: 16px; font-weight: 300; color: #cbd5e1; margin-bottom: 28px; }
+  .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+  .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 11px; color: #94a3b8; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+  .goal-badge { display: inline-block; background: #fbbf24; color: #0f172a; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 2px; padding: 4px 12px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+
+  .legend { display: flex; gap: 6px; flex-wrap: wrap; padding: 16px 48px; background: var(--navy2); align-items: center; }
+  .badge { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+  .b-rest { background: #334155; color: #94a3b8; }
+  .b-easy { background: #1d4ed8; color: #bfdbfe; }
+  .b-long { background: #047857; color: #a7f3d0; }
+  .b-quality { background: #c2410c; color: #fed7aa; }
+  .b-race { background: #b45309; color: #fde68a; }
+  .legend-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: #64748b; letter-spacing: 2px; text-transform: uppercase; margin-right: 8px; line-height: 2; }
+
+  .container { max-width: 1300px; margin: 0 auto; padding: 32px 24px 60px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-top: 40px; }
+
+  .vdot-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .vdot-table th { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 8px 12px; text-align: center; background: var(--white); border-bottom: 2px solid var(--border); }
+  .vdot-table th.left { text-align: left; }
+  .vdot-table td { padding: 9px 12px; text-align: center; border-bottom: 1px solid var(--border); font-weight: 500; }
+  .vdot-table td.vdot-num { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; text-align: left; }
+  .vdot-table tr:hover td { background: #f8fafc; }
+  .vdot-highlight td { background: #fff7ed; }
+  .vdot-highlight td.vdot-num { color: var(--p2); }
+  .vdot-target td { background: #fef9c3; }
+  .vdot-target td.vdot-num { color: #b45309; font-size: 22px; }
+  .table-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 8px; }
+  .phase-card { border-radius: 10px; padding: 16px 18px; color: white; }
+  .phase-card .ph-num { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; opacity: 0.75; margin-bottom: 4px; }
+  .phase-card .ph-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .phase-card .ph-weeks { font-size: 12px; opacity: 0.8; margin-bottom: 4px; }
+  .phase-card .ph-focus { font-size: 12px; opacity: 0.7; font-style: italic; }
+
+  .week-block { margin-bottom: 20px; }
+  .week-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+  .week-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: var(--navy); line-height: 1; }
+  .week-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .ph-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; color: white; }
+  .vdot-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--navy); color: white; letter-spacing: 1px; }
+  .miles-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--muted); font-weight: 500; }
+
+  .day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .day-card { border-radius: 8px; border: 1px solid; padding: 10px 11px; min-height: 110px; }
+  .day-card.rest     { background: var(--rest-bg);    border-color: var(--rest-bd); }
+  .day-card.easy     { background: var(--easy-bg);    border-color: var(--easy-bd); }
+  .day-card.long     { background: var(--long-bg);    border-color: var(--long-bd); }
+  .day-card.quality  { background: var(--quality-bg); border-color: var(--quality-bd); }
+  .day-card.race     { background: var(--race-bg);    border-color: var(--race-bd); }
+
+  .day-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 7px; }
+  .day-name { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--muted); }
+  .day-date { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--muted); font-weight: 400; }
+  .day-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .db-rest    { background: #cbd5e1; color: #475569; }
+  .db-easy    { background: #bfdbfe; color: #1d4ed8; }
+  .db-long    { background: #bbf7d0; color: #047857; }
+  .db-quality { background: #fed7aa; color: #c2410c; }
+  .db-race    { background: #fde68a; color: #92400e; }
+
+  .day-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 3px; }
+  .day-miles { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; color: var(--slate); margin-bottom: 5px; }
+  .day-desc  { font-size: 11.5px; color: var(--slate); line-height: 1.45; margin-bottom: 5px; }
+  .day-pace  { font-size: 11px; color: var(--muted); font-weight: 500; font-style: italic; line-height: 1.4; }
+
+  .wo-block { background: rgba(255,255,255,0.65); border-radius: 5px; padding: 7px 9px; margin-top: 5px; }
+  .wo-name  { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; color: var(--p2); letter-spacing: 1px; margin-bottom: 4px; }
+  .wo-reps  { font-size: 11.5px; color: var(--slate); line-height: 1.55; margin-bottom: 5px; }
+  .wo-rec   { font-size: 11px; background: rgba(0,0,0,0.04); border-left: 2px solid #fed7aa; padding: 4px 7px; border-radius: 0 4px 4px 0; color: var(--slate); line-height: 1.5; margin-bottom: 4px; }
+  .wo-rec strong { color: var(--navy2); font-weight: 600; }
+  .wo-paces { font-size: 10.5px; color: var(--muted); }
+  .wo-paces strong { color: var(--navy2); font-weight: 600; }
+
+  .day-card.race .day-title { color: #92400e; font-size: 18px; }
+
+  .notes-box { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-top: 12px; }
+  .notes-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+  .notes-box ul { padding-left: 18px; }
+  .notes-box li { font-size: 13px; color: var(--slate); margin-bottom: 6px; line-height: 1.5; }
+  .notes-box li strong { color: var(--navy); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+  @media (max-width: 900px) {
+    .day-grid { grid-template-columns: repeat(4, 1fr); }
+    .phases { grid-template-columns: repeat(2, 1fr); }
+    .hero { padding: 28px 20px; }
+    .hero h1 { font-size: 36px; }
+    .container { padding: 20px 12px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Daniels Running Formula — Personalized Plan</div>
+  <h1>Firecracker <span>5-Mile</span> <span class="goal-badge">SUB-30</span></h1>
+  <div class="hero-sub">July 4, 2026 &nbsp;·&nbsp; 15 Weeks &nbsp;·&nbsp; March 23 → July 4</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">50</div><div class="stat-label">Starting VDOT</div></div>
+    <div class="stat"><div class="stat-val">58</div><div class="stat-label">Target VDOT</div></div>
+    <div class="stat"><div class="stat-val">&lt;5:59/mi</div><div class="stat-label">Goal Race Pace</div></div>
+    <div class="stat"><div class="stat-val">~33 mi</div><div class="stat-label">Peak Week</div></div>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="legend-title">Workout Types →</span>
+  <span class="badge b-rest">Rest</span>
+  <span class="badge b-easy">Easy / E-Pace</span>
+  <span class="badge b-long">Long Run</span>
+  <span class="badge b-quality">Quality (Q)</span>
+  <span class="badge b-race">Race</span>
+</div>
+
+<div class="container">
+
+<div class="section-title">How to Use This Plan</div>
+<div class="notes-box">
+  <ul>
+    <li><strong>Sub-30 context:</strong> 5 miles in 29:59 = 5:59.8/mi. At VDOT 58, T-pace is 5:59/mi — meaning by race day you'll be running T-pace for the full race. This is aggressive but realistic given your collegiate background (your old 8K fitness was essentially this pace). The plan builds you from VDOT 50 → 58 over 15 weeks.</li>
+    <li><strong>Warmup/Cooldown:</strong> All quality (Q) days include 1.5 mi easy WU + 1.5 mi easy CD. Mileage estimates include WU/CD. Never skip the warmup — R and I paces are demanding on cold muscles.</li>
+    <li><strong>VDOT Progression:</strong> Paces listed on each quality day reflect your current phase VDOT. Reassess every 2–3 weeks based on how workouts actually feel. If reps consistently feel controlled with gas left, bump up one VDOT.</li>
+    <li><strong>Easy days are non-negotiable:</strong> Every E-pace day must be truly conversational. If you have to think about pace, you're running too fast. These days enable the quality days.</li>
+    <li><strong>Long runs on weekends:</strong> Saturday = long run. Sunday = short shakeout, always easy.</li>
+    <li><strong>If you miss a day:</strong> Drop it. Never double up quality sessions. Protect the long run and at least one quality session per week minimum.</li>
+    <li><strong>Taper (Weeks 14–15):</strong> Volume drops ~35–40%. Keep the intensity, cut the volume. Legs will feel surprisingly fresh by race week — that's normal and good.</li>
+  </ul>
+</div>
+
+<div class="section-title">Training Phases</div>
+<div class="phases">
+  <div class="phase-card" style="background:var(--p1);">
+    <div class="ph-num">PHASE 1 · WKS 1–4</div>
+    <div class="ph-name">Foundation</div>
+    <div class="ph-weeks">VDOT 50 · 20–28 mi/wk</div>
+    <div class="ph-focus">Rebuild aerobic base from scratch. Easy miles only. Add strides in Wks 3–4 to wake up fast-twitch muscle memory.</div>
+  </div>
+  <div class="phase-card" style="background:var(--p2);">
+    <div class="ph-num">PHASE 2 · WKS 5–8</div>
+    <div class="ph-name">R-Focus</div>
+    <div class="ph-weeks">VDOT 52–53 · 30–33 mi/wk</div>
+    <div class="ph-focus">Speed & neuromuscular development. R-pace reps rebuild leg turnover, running economy, and the snap you had as a collegiate runner.</div>
+  </div>
+  <div class="phase-card" style="background:var(--p3);">
+    <div class="ph-num">PHASE 3 · WKS 9–12</div>
+    <div class="ph-name">I-Focus &amp; Mix</div>
+    <div class="ph-weeks">VDOT 54–56 · 33–37 mi/wk</div>
+    <div class="ph-focus">VO₂max development. I-pace intervals push your ceiling. Mix workouts bridge speed and threshold, building race-specific fitness.</div>
+  </div>
+  <div class="phase-card" style="background:var(--p4);">
+    <div class="ph-num">PHASE 4 · WKS 13–15</div>
+    <div class="ph-name">Race-Specific &amp; Taper</div>
+    <div class="ph-weeks">VDOT 57–58 · 14–33 mi/wk</div>
+    <div class="ph-focus">Race-pace work at full fitness. Volume drops while intensity holds. Trust the fitness you've built.</div>
+  </div>
+</div>
+
+<div class="section-title" style="margin-top:32px;">VDOT Pace Reference — Progression Toward Sub-30</div>
+<div class="table-wrap">
+<table class="vdot-table">
+  <thead>
+    <tr>
+      <th class="left">VDOT</th>
+      <th>Phase</th>
+      <th>Easy/mi</th>
+      <th>T-pace/mi</th>
+      <th>T (1000m)</th>
+      <th>I (400m)</th>
+      <th>I (1000m)</th>
+      <th>I (1200m)</th>
+      <th>R (200m)</th>
+      <th>R (400m)</th>
+      <th>R (800m)</th>
+      <th>5-mi Est.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="vdot-num">50</td>
+      <td><span class="badge" style="background:#dbeafe;color:#1d4ed8;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">FOUND.</span></td>
+      <td>8:20–9:00</td><td>7:10</td><td>4:26</td><td>1:36</td><td>4:00</td><td>4:48</td><td>46s</td><td>1:32</td><td>3:04</td><td>~36:00</td>
+    </tr>
+    <tr>
+      <td class="vdot-num">52</td>
+      <td><span class="badge" style="background:#ffedd5;color:#ea580c;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">R-FOCUS</span></td>
+      <td>8:04–8:44</td><td>6:50</td><td>4:14</td><td>1:32</td><td>3:50</td><td>4:36</td><td>44s</td><td>1:28</td><td>2:56</td><td>~34:25</td>
+    </tr>
+    <tr>
+      <td class="vdot-num">53</td>
+      <td><span class="badge" style="background:#ffedd5;color:#ea580c;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">R-FOCUS</span></td>
+      <td>7:56–8:36</td><td>6:40</td><td>4:08</td><td>1:30</td><td>3:44</td><td>4:29</td><td>43s</td><td>1:26</td><td>2:52</td><td>~33:40</td>
+    </tr>
+    <tr>
+      <td class="vdot-num">54</td>
+      <td><span class="badge" style="background:#fee2e2;color:#dc2626;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">I-FOCUS</span></td>
+      <td>7:47–8:25</td><td>6:30</td><td>4:02</td><td>1:28</td><td>3:40</td><td>4:24</td><td>41s</td><td>1:23</td><td>2:46</td><td>~32:50</td>
+    </tr>
+    <tr>
+      <td class="vdot-num">55</td>
+      <td><span class="badge" style="background:#fee2e2;color:#dc2626;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">I/MIX</span></td>
+      <td>7:38–8:12</td><td>6:20</td><td>3:56</td><td>1:27</td><td>3:37</td><td>4:21</td><td>40s</td><td>1:21</td><td>2:42</td><td>~32:00</td>
+    </tr>
+    <tr class="vdot-highlight">
+      <td class="vdot-num">56</td>
+      <td><span class="badge" style="background:#fee2e2;color:#dc2626;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">I/MIX</span></td>
+      <td>7:32–8:05</td><td>6:12</td><td>3:50</td><td>1:25</td><td>3:32</td><td>4:14</td><td>39s</td><td>1:19</td><td>2:38</td><td>~31:15</td>
+    </tr>
+    <tr>
+      <td class="vdot-num">57</td>
+      <td><span class="badge" style="background:#ede9fe;color:#7c3aed;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">RACE-SP.</span></td>
+      <td>7:25–7:58</td><td>6:05</td><td>3:46</td><td>1:23</td><td>3:27</td><td>4:08</td><td>38s</td><td>1:17</td><td>2:34</td><td>~30:35</td>
+    </tr>
+    <tr class="vdot-target">
+      <td class="vdot-num">58 ★</td>
+      <td><span class="badge" style="background:#fef9c3;color:#92400e;font-family:'Barlow Condensed';font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px;">TARGET</span></td>
+      <td>7:18–7:52</td><td>5:59</td><td>3:42</td><td>1:21</td><td>3:22</td><td>4:02</td><td>37s</td><td>1:14</td><td>2:28</td><td>&lt;29:59</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:8px;">★ Target VDOT 58 = T-pace of 5:59/mi. A 5-mile race at T-effort = ~29:55. 5-mile estimates are interpolated from Daniels' tables. At VDOT 58: 1500m Race Pace ≈ 800m in 2:28 · 800m Race Pace ≈ 200m in 31–32s. Paces for VDOT 55 sourced directly from your running plan PDF; others interpolated.</p>
+
+<hr class="divider">
+<div id="weeks-container"></div>
+</div>
+
+<script>
+const P1='#2563eb', P2='#ea580c', P3='#dc2626', P4='#7c3aed';
+const BADGE = { rest:'db-rest', easy:'db-easy', long:'db-long', quality:'db-quality', race:'db-race' };
+const LABEL = { rest:'Rest', easy:'Easy', long:'Long Run', quality:'Quality', race:'Race' };
+
+// ─── RECOVERY REFERENCE ────────────────────────────────────────────────────
+// EQUAL RECOVERY (R-pace): jog the exact same distance as the rep, easy pace
+//   200m rep → jog 200m easy (~70–90s) · 400m rep → jog 400m easy (~2:30–3:00)
+//   800m rep → jog 800m easy (~5:00–6:00)
+// FULL RECOVERY (R-pace): walk/jog until breathing is fully returned to normal
+//   400m rep → ~2–3 min walk/jog · 800m rep → ~4–5 min walk/jog
+// BETWEEN SETS (R-pace): jog 2–3 min easy between the last rep of one set and first of next
+// HALF-TIME RECOVERY (Mix T-pace): jog easy for half the rep duration
+//   e.g., 1000m T in 4:02 → jog 2:01 easy before next rep
+// I-PACE TIMED RECOVERY: jog easy for stated time (e.g., 3 min recovery = 3 min easy jog)
+
+const weeks = [
+
+// ══════════════════════════════════════════════════════════
+// PHASE 1: FOUNDATION — Weeks 1–4
+// ══════════════════════════════════════════════════════════
+
+{ w:1, phase:1, phaseColor:P1, phaseName:'Foundation', vdot:50, milesRange:'~20 mi',
+  days:[
+  {d:'MON',dt:'Mar 23',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. First day of the plan — let the work begin Monday.'},
+  {d:'TUE',dt:'Mar 24',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Truly conversational pace. First run back — walk breaks are fine. Assess how the body feels.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'WED',dt:'Mar 25',t:'easy',mi:'3 mi',title:'Easy Run',
+   desc:'Short and comfortable. No ego. Keep HR low and breathing easy.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'THU',dt:'Mar 26',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Steady easy effort. The goal this week is simply to run every scheduled day.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'FRI',dt:'Mar 27',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. Optional light stretching or walking.'},
+  {d:'SAT',dt:'Mar 28',t:'long',mi:'6 mi',title:'Long Run',
+   desc:'First long run back. Easy effort throughout. Stop if anything hurts.',
+   pace:'E/L: 8:30–9:00/mi'},
+  {d:'SUN',dt:'Mar 29',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'Very easy 30 min. Shake out soreness from Saturday.',
+   pace:'E: 8:20–9:00/mi'},
+]},
+
+{ w:2, phase:1, phaseColor:P1, phaseName:'Foundation', vdot:50, milesRange:'~24 mi',
+  days:[
+  {d:'MON',dt:'Mar 30',t:'rest',mi:'—',title:'Rest',desc:'Full recovery.'},
+  {d:'TUE',dt:'Mar 31',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy and relaxed. Build confidence. If the pace feels awkward, slow down.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'WED',dt:'Apr 1',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Midweek maintenance. Conversational the whole way.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'THU',dt:'Apr 2',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'If energy is good, drift toward the faster end of the range. Otherwise, stay slow.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'FRI',dt:'Apr 3',t:'rest',mi:'—',title:'Rest',desc:'Recovery before long run.'},
+  {d:'SAT',dt:'Apr 4',t:'long',mi:'7 mi',title:'Long Run',
+   desc:'One mile longer than last week. No heroics. Get comfortable being on your feet.',
+   pace:'E/L: 8:30–9:00/mi'},
+  {d:'SUN',dt:'Apr 5',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. Two solid weeks in the bank.',
+   pace:'E: 8:20–9:00/mi'},
+]},
+
+{ w:3, phase:1, phaseColor:P1, phaseName:'Foundation', vdot:50, milesRange:'~25 mi',
+  days:[
+  {d:'MON',dt:'Apr 6',t:'rest',mi:'—',title:'Rest',desc:'Full recovery.'},
+  {d:'TUE',dt:'Apr 7',t:'easy',mi:'5 mi',title:'Easy + Strides',
+   desc:'4 mi easy, then 6×20s strides on flat ground. Strides = smooth acceleration to about 90% effort, hold briefly, decelerate. Not a sprint — controlled, relaxed fast running.',
+   pace:'Easy: 8:20–9:00/mi · Strides: fast & relaxed, full 60–90s walk recovery between each'},
+  {d:'WED',dt:'Apr 8',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy recovery from strides yesterday.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'THU',dt:'Apr 9',t:'easy',mi:'5 mi',title:'Easy + Strides',
+   desc:'4 mi easy + 6×20s strides again. Focus on relaxing your shoulders and hands at speed.',
+   pace:'Easy: 8:20–9:00/mi · Strides: fast & relaxed, full walk recovery'},
+  {d:'FRI',dt:'Apr 10',t:'rest',mi:'—',title:'Rest',desc:'Recovery.'},
+  {d:'SAT',dt:'Apr 11',t:'long',mi:'8 mi',title:'Long Run',
+   desc:'Comfortable long effort. Notice if strides this week made the legs feel snappier.',
+   pace:'E/L: 8:30–9:00/mi'},
+  {d:'SUN',dt:'Apr 12',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'Light and easy. Aerobic engine is warming up.',
+   pace:'E: 8:20–9:00/mi'},
+]},
+
+{ w:4, phase:1, phaseColor:P1, phaseName:'Foundation', vdot:50, milesRange:'~28 mi',
+  days:[
+  {d:'MON',dt:'Apr 13',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. Final base-only week.'},
+  {d:'TUE',dt:'Apr 14',t:'easy',mi:'5 mi',title:'Easy + Strides',
+   desc:'4 mi easy + 8×20s strides. Slightly more strides this week. Still not sprinting — smooth and controlled acceleration. The goal is to feel the gears without grinding them.',
+   pace:'Easy: 8:20–9:00/mi · Strides: 60–90s walk recovery between each'},
+  {d:'WED',dt:'Apr 15',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy recovery. Just mileage.',
+   pace:'E: 8:20–9:00/mi'},
+  {d:'THU',dt:'Apr 16',t:'easy',mi:'6 mi',title:'Easy + Strides',
+   desc:'5 mi easy + 8×20s strides. Last strides session before quality workouts start next week.',
+   pace:'Easy: 8:20–9:00/mi · Strides: smooth & controlled'},
+  {d:'FRI',dt:'Apr 17',t:'rest',mi:'—',title:'Rest',desc:'Rest. Quality workouts begin next week.'},
+  {d:'SAT',dt:'Apr 18',t:'long',mi:'9 mi',title:'Long Run',
+   desc:'Longest run so far. Comfortable and patient. If legs feel heavy, slow down. Completion over pace.',
+   pace:'E/L: 8:30–9:00/mi'},
+  {d:'SUN',dt:'Apr 19',t:'easy',mi:'4 mi',title:'Easy Shakeout',
+   desc:'Easy 40 min. Phase 1 is complete.',
+   pace:'E: 8:20–9:00/mi'},
+]},
+
+// ══════════════════════════════════════════════════════════
+// PHASE 2: R-FOCUS — Weeks 5–8
+// ══════════════════════════════════════════════════════════
+
+{ w:5, phase:2, phaseColor:P2, phaseName:'R-Focus', vdot:52, milesRange:'~31 mi',
+  days:[
+  {d:'MON',dt:'Apr 20',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. Quality starts tomorrow. VDOT bumps to 52.'},
+  {d:'TUE',dt:'Apr 21',t:'quality',mi:'~6 mi',title:'Q1 — R-1',
+   desc:'WU 1.5 mi easy → R-1 → CD 1.5 mi easy',
+   wo:{name:'R-1',
+    reps:'3 sets of: 2×200 + 1×400 at R-pace',
+    rec:'Equal recovery = jog the same distance as the rep you just finished at easy pace before the next rep: after each 200 → jog 200m easy (~2:00) · after the 400 → jog 400m easy (~3:30). Between sets: 2–3 min easy jog before starting the next set.',
+    paces:'R(200m): 44s · R(400m): 1:28 · WU/CD: 8:04–8:44/mi'},
+  },
+  {d:'WED',dt:'Apr 22',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'True easy. Let the legs absorb the R-pace work.',
+   pace:'E: 8:04–8:44/mi'},
+  {d:'THU',dt:'Apr 23',t:'quality',mi:'~5 mi',title:'Q2 — R-2',
+   desc:'WU 1.5 mi easy → R-2 → CD 1.5 mi easy',
+   wo:{name:'R-2',
+    reps:'6×400 at R-pace',
+    rec:'Equal recovery = after each 400m rep, jog 400m easy (~3:00–3:30) before the next rep. You should be breathing comfortably but not fully rested when the next rep begins.',
+    paces:'R(400m): 1:28 · WU/CD: 8:04–8:44/mi'},
+  },
+  {d:'FRI',dt:'Apr 24',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy recovery before the long run.',
+   pace:'E: 8:04–8:44/mi'},
+  {d:'SAT',dt:'Apr 25',t:'long',mi:'9 mi',title:'Long Run',
+   desc:'Comfortable long effort. Stay conversational the whole time.',
+   pace:'E/L: 8:10–8:44/mi'},
+  {d:'SUN',dt:'Apr 26',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'Light 30 min easy. Great first week of quality work.',
+   pace:'E: 8:04–8:44/mi'},
+]},
+
+{ w:6, phase:2, phaseColor:P2, phaseName:'R-Focus', vdot:52, milesRange:'~32 mi',
+  days:[
+  {d:'MON',dt:'Apr 27',t:'rest',mi:'—',title:'Rest',desc:'Full recovery.'},
+  {d:'TUE',dt:'Apr 28',t:'quality',mi:'~6 mi',title:'Q1 — R-5',
+   desc:'WU 1.5 mi easy → R-5 → CD 1.5 mi easy',
+   wo:{name:'R-5',
+    reps:'3 sets of: 2×200 + 1×800 at R-pace',
+    rec:'Equal recovery = jog the same distance as each rep: after each 200 → jog 200m easy (~2:00) · after the 800 → jog 800m easy (~5:30–6:00). Between sets: 3 min easy jog before starting the next set. The 800 recovery jog is long — that\'s intentional for R-pace.',
+    paces:'R(200m): 44s · R(800m): 2:56 · WU/CD: 8:04–8:44/mi'},
+  },
+  {d:'WED',dt:'Apr 29',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy recovery. Legs may be feeling the 800s from Tuesday.',
+   pace:'E: 8:04–8:44/mi'},
+  {d:'THU',dt:'Apr 30',t:'quality',mi:'~5 mi',title:'Q2 — R-2',
+   desc:'WU 1.5 mi easy → R-2 → CD 1.5 mi easy',
+   wo:{name:'R-2',
+    reps:'6×400 at R-pace',
+    rec:'Equal recovery = jog 400m easy after each rep (~3:00–3:30). By rep 5–6 you\'ll want more rest — take it if needed, but try to keep consistent.',
+    paces:'R(400m): 1:28 · WU/CD: 8:04–8:44/mi'},
+  },
+  {d:'FRI',dt:'May 1',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Keep it comfortable.',
+   pace:'E: 8:04–8:44/mi'},
+  {d:'SAT',dt:'May 2',t:'long',mi:'10 mi',title:'Long Run',
+   desc:'10 miles — a real long run. Stay patient. If feeling good after mile 7, slight negative split is fine.',
+   pace:'E/L: 8:10–8:44/mi'},
+  {d:'SUN',dt:'May 3',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. Recover well.',
+   pace:'E: 8:04–8:44/mi'},
+]},
+
+{ w:7, phase:2, phaseColor:P2, phaseName:'R-Focus', vdot:53, milesRange:'~33 mi',
+  days:[
+  {d:'MON',dt:'May 4',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. VDOT bumps to 53 — paces tighten slightly.'},
+  {d:'TUE',dt:'May 5',t:'quality',mi:'~7 mi',title:'Q1 — R-6',
+   desc:'WU 1.5 mi easy → R-6 → CD 1.5 mi easy',
+   wo:{name:'R-6 (30–45 min)',
+    reps:'3 sets of: 1×800 + 1×400 + 2×200 at R-pace',
+    rec:'Equal recovery = match each rep with an equal-distance jog: 800 rep → jog 800m easy (~5:30) · 400 rep → jog 400m easy (~3:00) · each 200 rep → jog 200m easy (~2:00). Between sets: 3 min easy jog. The descending rep size within each set means recovery shortens naturally — good practice for reading effort.',
+    paces:'R(200m): 43s · R(400m): 1:26 · R(800m): 2:52 · WU/CD: 7:56–8:36/mi'},
+  },
+  {d:'WED',dt:'May 6',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy recovery. Absorb the R-6 session.',
+   pace:'E: 7:56–8:36/mi'},
+  {d:'THU',dt:'May 7',t:'quality',mi:'~6 mi',title:'Q2 — R-1',
+   desc:'WU 1.5 mi easy → R-1 → CD 1.5 mi easy',
+   wo:{name:'R-1',
+    reps:'3 sets of: 2×200 + 1×400 at R-pace',
+    rec:'Equal recovery = jog the same distance as each rep: after each 200 → jog 200m easy (~2:00) · after the 400 → jog 400m easy (~3:00). Between sets: 2–3 min easy jog.',
+    paces:'R(200m): 43s · R(400m): 1:26 · WU/CD: 7:56–8:36/mi'},
+  },
+  {d:'FRI',dt:'May 8',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy before the long run.',
+   pace:'E: 7:56–8:36/mi'},
+  {d:'SAT',dt:'May 9',t:'long',mi:'11 mi',title:'Long Run',
+   desc:'11 miles. Finish feeling like you had more left in the tank — that\'s the goal.',
+   pace:'E/L: 8:05–8:36/mi'},
+  {d:'SUN',dt:'May 10',t:'easy',mi:'4 mi',title:'Easy Shakeout',
+   desc:'Easy 40 min. Strong week.',
+   pace:'E: 7:56–8:36/mi'},
+]},
+
+{ w:8, phase:2, phaseColor:P2, phaseName:'R-Focus', vdot:53, milesRange:'~34 mi',
+  days:[
+  {d:'MON',dt:'May 11',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. Final R-focus week.'},
+  {d:'TUE',dt:'May 12',t:'quality',mi:'~7 mi',title:'Q1 — R-7',
+   desc:'WU 1.5 mi easy → R-7 → CD 1.5 mi easy',
+   wo:{name:'R-7 (30–45 min)',
+    reps:'3 sets of: 1×800 + 1×400 + 2×200 at R-pace',
+    rec:'Equal recovery = match each rep with same-distance easy jog: 800 rep → jog 800m easy (~5:30) · 400 rep → jog 400m easy (~3:00) · each 200 rep → jog 200m easy (~2:00). Between sets: 3 min easy jog. R-7 has the same structure as R-6 — use the familiarity to focus on running relaxed and efficient at pace.',
+    paces:'R(200m): 43s · R(400m): 1:26 · R(800m): 2:52 · WU/CD: 7:56–8:36/mi'},
+  },
+  {d:'WED',dt:'May 13',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy and comfortable.',
+   pace:'E: 7:56–8:36/mi'},
+  {d:'THU',dt:'May 14',t:'quality',mi:'~7 mi',title:'Q2 — R-3',
+   desc:'WU 1.5 mi easy → R-3 (30–45 min version) → CD 1.5 mi easy',
+   wo:{name:'R-3 (30–45 min)',
+    reps:'2 sets of: 1×800 + 2×400 + 4×200 at R-pace',
+    rec:'Full recovery between each individual rep = walk/jog until breathing fully returns to normal and you feel ready to go again — typically 2–3 min after a 400, 4–5 min after the 800. This is more generous than equal recovery. Between the 2 sets: 5 min easy jog.',
+    paces:'R(200m): 43s · R(400m): 1:26 · R(800m): 2:52 · WU/CD: 7:56–8:36/mi'},
+  },
+  {d:'FRI',dt:'May 15',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy shake-out.',
+   pace:'E: 7:56–8:36/mi'},
+  {d:'SAT',dt:'May 16',t:'long',mi:'12 mi',title:'Long Run',
+   desc:'12 miles — peak long run distance. Settle into a groove. This is your aerobic cornerstone.',
+   pace:'E/L: 8:05–8:36/mi'},
+  {d:'SUN',dt:'May 17',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. R-phase complete. I-phase begins next week.',
+   pace:'E: 7:56–8:36/mi'},
+]},
+
+// ══════════════════════════════════════════════════════════
+// PHASE 3: I-FOCUS & MIX — Weeks 9–12
+// ══════════════════════════════════════════════════════════
+
+{ w:9, phase:3, phaseColor:P3, phaseName:'I-Focus', vdot:54, milesRange:'~35 mi',
+  days:[
+  {d:'MON',dt:'May 18',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. I-phase begins. VDOT 54.'},
+  {d:'TUE',dt:'May 19',t:'quality',mi:'~7 mi',title:'Q1 — I-4',
+   desc:'WU 1.5 mi easy → I-4 → CD 1.5 mi easy',
+   wo:{name:'I-4',
+    reps:'4 sets of: 3 min at I-pace + 1 min easy',
+    rec:'The 1 min easy is built into the set — that\'s your recovery. It\'s intentionally short — you\'re accumulating stress. I-pace should feel like a controlled, hard effort (~5K to 3K race effort). After all 4 sets: 2–3 min easy jog before the cooldown.',
+    paces:'I-pace: ~6:06/mi (400m≈1:28) · WU/CD: 7:47–8:25/mi'},
+  },
+  {d:'WED',dt:'May 20',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'True easy. I-pace workouts are demanding — honor the recovery days.',
+   pace:'E: 7:47–8:25/mi'},
+  {d:'THU',dt:'May 21',t:'quality',mi:'~6 mi',title:'Q2 — R-5',
+   desc:'WU 1.5 mi easy → R-5 → CD 1.5 mi easy',
+   wo:{name:'R-5',
+    reps:'3 sets of: 2×200 + 1×800 at R-pace',
+    rec:'Equal recovery = match rep distance with easy jog: after each 200 → jog 200m easy (~2:00) · after the 800 → jog 800m easy (~5:30). Between sets: 3 min easy jog.',
+    paces:'R(200m): 41s · R(800m): 2:46 · WU/CD: 7:47–8:25/mi'},
+  },
+  {d:'FRI',dt:'May 22',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy before the long run.',
+   pace:'E: 7:47–8:25/mi'},
+  {d:'SAT',dt:'May 23',t:'long',mi:'12 mi',title:'Long Run',
+   desc:'12 miles again. Maintaining the peak long run distance for 3 weeks builds serious base.',
+   pace:'E/L: 7:55–8:25/mi'},
+  {d:'SUN',dt:'May 24',t:'easy',mi:'4 mi',title:'Easy Shakeout',
+   desc:'Easy 40 min recovery.',
+   pace:'E: 7:47–8:25/mi'},
+]},
+
+{ w:10, phase:3, phaseColor:P3, phaseName:'I-Focus', vdot:54, milesRange:'~35 mi',
+  days:[
+  {d:'MON',dt:'May 25',t:'rest',mi:'—',title:'Rest',desc:'Full recovery.'},
+  {d:'TUE',dt:'May 26',t:'quality',mi:'~7 mi',title:'Q1 — I-2',
+   desc:'WU 1.5 mi easy → I-2 → CD 1.5 mi easy',
+   wo:{name:'I-2',
+    reps:'3 sets of: 4 min at I-pace + 3 min easy',
+    rec:'3 min easy jog is your recovery — it\'s enough to bring HR down partially before the next set begins. Don\'t walk unless you have to. I-pace should be uncomfortable but controlled — not a flat-out sprint. After all 3 sets: 2 min easy jog.',
+    paces:'I-pace: ~6:06/mi (400m≈1:28) · WU/CD: 7:47–8:25/mi'},
+  },
+  {d:'WED',dt:'May 27',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Relaxed recovery after I-2.',
+   pace:'E: 7:47–8:25/mi'},
+  {d:'THU',dt:'May 28',t:'quality',mi:'~7 mi',title:'Q2 — I-4',
+   desc:'WU 1.5 mi easy → I-4 → CD 1.5 mi easy',
+   wo:{name:'I-4',
+    reps:'4 sets of: 3 min at I-pace + 1 min easy',
+    rec:'Same short built-in recovery as Week 9. With two I-workouts this week, you\'ll feel the cumulative fatigue. That\'s okay — execute controlled, not heroic. After all 4 sets: 2 min easy jog before the cooldown.',
+    paces:'I-pace: ~6:06/mi (400m≈1:28) · WU/CD: 7:47–8:25/mi'},
+  },
+  {d:'FRI',dt:'May 29',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy run. Two I-workouts in one week — recovery is mandatory.',
+   pace:'E: 7:47–8:25/mi'},
+  {d:'SAT',dt:'May 30',t:'long',mi:'12 mi',title:'Long Run',
+   desc:'12 miles again. Your aerobic engine is building into something serious.',
+   pace:'E/L: 7:55–8:25/mi'},
+  {d:'SUN',dt:'May 31',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. May is done.',
+   pace:'E: 7:47–8:25/mi'},
+]},
+
+{ w:11, phase:3, phaseColor:P3, phaseName:'I / Mix', vdot:55, milesRange:'~37 mi',
+  days:[
+  {d:'MON',dt:'Jun 1',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. VDOT 55. Mix workouts begin.'},
+  {d:'TUE',dt:'Jun 2',t:'quality',mi:'~7 mi',title:'Q1 — I-3',
+   desc:'WU 1.5 mi easy → I-3 → CD 1.5 mi easy',
+   wo:{name:'I-3',
+    reps:'3 sets of: 1200m at I-pace + 3 min recovery',
+    rec:'3 min easy jog between each 1200. This is a stated fixed recovery — not based on feel. Start the jog timer when you finish the rep. 3 min will feel short after a hard 1200 — that\'s intentional. Focus on even 400m splits within each 1200.',
+    paces:'I(1200m): 4:21 · I-pace: ~5:49/mi · WU/CD: 7:38–8:12/mi'},
+  },
+  {d:'WED',dt:'Jun 3',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy recovery. 1200s are demanding. Honor the easy day.',
+   pace:'E: 7:38–8:12/mi'},
+  {d:'THU',dt:'Jun 4',t:'quality',mi:'~8 mi',title:'Q2 — Mix-1',
+   desc:'WU 1.5 mi easy → Mix-1 → CD 1.5 mi easy',
+   wo:{name:'Mix-1 (38:45)',
+    reps:'4×1000 at T-pace + 2×1200 at I-pace + 4×200 at R-pace',
+    rec:'After each T-pace 1000: jog easy for ½ the time it took you (~2:00 jog). After each I-pace 1200: jog easy for ½ the time it took you (~2:10 jog). After each R-pace 200: full recovery = walk/jog 200m easy (~90–120s) until you feel ready. Transition jog between each block (T→I, I→R): 2 min easy.',
+    paces:'T(1000m): 3:56 · I(1200m): 4:21 · R(200m): 40s · WU/CD: 7:38–8:12/mi'},
+  },
+  {d:'FRI',dt:'Jun 5',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy shake-out. Mix-1 is your most complex workout yet — absorb it.',
+   pace:'E: 7:38–8:12/mi'},
+  {d:'SAT',dt:'Jun 6',t:'long',mi:'12 mi',title:'Long Run',
+   desc:'12 miles. Three weeks at this long run distance compounds your aerobic base.',
+   pace:'E/L: 7:45–8:12/mi'},
+  {d:'SUN',dt:'Jun 7',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. Near the peak of your training.',
+   pace:'E: 7:38–8:12/mi'},
+]},
+
+{ w:12, phase:3, phaseColor:P3, phaseName:'I / Mix', vdot:56, milesRange:'~35 mi',
+  days:[
+  {d:'MON',dt:'Jun 8',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. VDOT bumps to 56.'},
+  {d:'TUE',dt:'Jun 9',t:'quality',mi:'~9 mi',title:'Q1 — Mix-2',
+   desc:'WU 1.5 mi easy → Mix-2 (45+ min) → CD 1.5 mi easy',
+   wo:{name:'Mix-2 (45+ min)',
+    reps:'3 sets of: 2×200 at R-pace + 1×1000 at T-pace + 4×200 at R-pace',
+    rec:'Equal recovery throughout the set = after each 200 R-pace rep, jog 200m easy (~1:45–2:00) · after the 1000 T-pace rep, jog 500m easy (~3:00) which is ~½ the rep distance. Between full sets: 3 min easy jog.',
+    paces:'R(200m): 39s · T(1000m): 3:50 · WU/CD: 7:32–8:05/mi'},
+  },
+  {d:'WED',dt:'Jun 10',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy. Mix-2 is a long quality session — let the body absorb it.',
+   pace:'E: 7:32–8:05/mi'},
+  {d:'THU',dt:'Jun 11',t:'quality',mi:'~7 mi',title:'Q2 — I-3',
+   desc:'WU 1.5 mi easy → I-3 → CD 1.5 mi easy',
+   wo:{name:'I-3',
+    reps:'3 sets of: 1200m at I-pace + 3 min recovery',
+    rec:'3 min easy jog between each 1200 — fixed, as labeled. At VDOT 56, the pace is slightly faster than last week. Focus on composure: smooth form, even breathing, controlled aggression.',
+    paces:'I(1200m): 4:14 · I-pace: ~5:41/mi · WU/CD: 7:32–8:05/mi'},
+  },
+  {d:'FRI',dt:'Jun 12',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy shake-out.',
+   pace:'E: 7:32–8:05/mi'},
+  {d:'SAT',dt:'Jun 13',t:'long',mi:'11 mi',title:'Long Run',
+   desc:'11 miles — first reduction in long run. Taper has begun to quietly start. You\'ve done the work.',
+   pace:'E/L: 7:40–8:05/mi'},
+  {d:'SUN',dt:'Jun 14',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. Phase 3 is complete.',
+   pace:'E: 7:32–8:05/mi'},
+]},
+
+// ══════════════════════════════════════════════════════════
+// PHASE 4: RACE-SPECIFIC & TAPER — Weeks 13–15
+// ══════════════════════════════════════════════════════════
+
+{ w:13, phase:4, phaseColor:P4, phaseName:'Race-Specific', vdot:57, milesRange:'~33 mi',
+  days:[
+  {d:'MON',dt:'Jun 15',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. VDOT 57. Race-specific phase — target fitness is nearly here.'},
+  {d:'TUE',dt:'Jun 16',t:'quality',mi:'~8 mi',title:'Q1 — Mix-1',
+   desc:'WU 1.5 mi easy → Mix-1 → CD 1.5 mi easy',
+   wo:{name:'Mix-1 (38:45)',
+    reps:'4×1000 at T-pace + 2×1200 at I-pace + 4×200 at R-pace',
+    rec:'After each T-pace 1000: jog easy for ½ the rep time (~1:53). After each I-pace 1200: jog easy for ½ the rep time (~2:04). After each R-pace 200: full recovery = walk/jog ~90–120s until ready. Transition jog between blocks: 2 min easy.',
+    paces:'T(1000m): 3:46 · I(1200m): 4:08 · R(200m): 38s · WU/CD: 7:25–7:58/mi'},
+  },
+  {d:'WED',dt:'Jun 17',t:'easy',mi:'5 mi',title:'Easy Run',
+   desc:'Easy. At VDOT 57, this Mix-1 is at near-peak quality.',
+   pace:'E: 7:25–7:58/mi'},
+  {d:'THU',dt:'Jun 18',t:'quality',mi:'~8 mi',title:'Q2 — Mix-2',
+   desc:'WU 1.5 mi easy → Mix-2 (45+ min) → CD 1.5 mi easy',
+   wo:{name:'Mix-2 (45+ min)',
+    reps:'3 sets of: 2×200 at R-pace + 1×1000 at T-pace + 4×200 at R-pace',
+    rec:'Equal recovery throughout: after each 200 R-pace rep → jog 200m easy (~1:45) · after the T-pace 1000 → jog 500m easy (~2:45). Between sets: 3 min easy jog.',
+    paces:'R(200m): 38s · T(1000m): 3:46 · WU/CD: 7:25–7:58/mi'},
+  },
+  {d:'FRI',dt:'Jun 19',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy. You\'ve put in the hard work. It\'s starting to convert.',
+   pace:'E: 7:25–7:58/mi'},
+  {d:'SAT',dt:'Jun 20',t:'long',mi:'10 mi',title:'Long Run',
+   desc:'10 miles — taper continues. Keep effort easy. Do not race this.',
+   pace:'E/L: 7:32–7:58/mi'},
+  {d:'SUN',dt:'Jun 21',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. Two weeks to go.',
+   pace:'E: 7:25–7:58/mi'},
+]},
+
+{ w:14, phase:4, phaseColor:P4, phaseName:'Taper', vdot:58, milesRange:'~26 mi',
+  days:[
+  {d:'MON',dt:'Jun 22',t:'rest',mi:'—',title:'Rest',desc:'Full recovery. VDOT 58 — target race fitness. Final sharpening week.'},
+  {d:'TUE',dt:'Jun 23',t:'quality',mi:'~6 mi',title:'Q1 — R-4 (Race-Specific)',
+   desc:'WU 1.5 mi easy → R-4 → CD 1.5 mi easy',
+   wo:{name:'R-4 (Race-Specific)',
+    reps:'3×800 with increasing speed + 4×200 at 800 Race Pace',
+    rec:'After each 800: equal recovery = jog 800m easy (~5:00–5:30). After each 200: equal recovery = jog 200m easy (~1:45). The increasing speed 800s are: 1st ~2:35 (slightly slower than 1500 RP) · 2nd ~2:28 (at 1500 RP) · 3rd ~2:24–2:25 (2–3s faster than RP). The 4×200 finisher at 800 race pace sharpens finishing speed.',
+    paces:'800s: 2:35 → 2:28 → 2:24 · 4×200 @ 800 RP ≈ 31–32s · WU/CD: 7:18–7:52/mi'},
+  },
+  {d:'WED',dt:'Jun 24',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Easy and relaxed. Legs should feel snappy from Tuesday.',
+   pace:'E: 7:18–7:52/mi'},
+  {d:'THU',dt:'Jun 25',t:'quality',mi:'~6 mi',title:'Q2 — R-2',
+   desc:'WU 1.5 mi easy → R-2 → CD 1.5 mi easy',
+   wo:{name:'R-2',
+    reps:'6×400 at R-pace',
+    rec:'Equal recovery = jog 400m easy after each rep (~2:45–3:00). With fresh-ish taper legs these should feel sharp and powerful. Don\'t push harder than R-pace — the goal is crisp turnover, not maximal effort.',
+    paces:'R(400m): 1:14 · WU/CD: 7:18–7:52/mi'},
+  },
+  {d:'FRI',dt:'Jun 26',t:'easy',mi:'3 mi',title:'Easy Run',
+   desc:'30 min easy. Legs should feel good now.',
+   pace:'E: 7:18–7:52/mi'},
+  {d:'SAT',dt:'Jun 27',t:'long',mi:'8 mi',title:'Long Run',
+   desc:'8 miles — well down from 12. Comfortable and controlled. This is not a fitness day; it\'s a stay-sharp day.',
+   pace:'E/L: 7:25–7:52/mi'},
+  {d:'SUN',dt:'Jun 28',t:'easy',mi:'3 mi',title:'Easy Shakeout',
+   desc:'30 min easy. One week to go.',
+   pace:'E: 7:18–7:52/mi'},
+]},
+
+{ w:15, phase:4, phaseColor:P4, phaseName:'Race Week', vdot:58, milesRange:'~13 mi + Race',
+  days:[
+  {d:'MON',dt:'Jun 29',t:'easy',mi:'4 mi',title:'Easy Run',
+   desc:'Relaxed easy run. Race week energy is real — don\'t chase it on easy days. Save every ounce for Saturday.',
+   pace:'E: 7:18–7:52/mi'},
+  {d:'TUE',dt:'Jun 30',t:'quality',mi:'~4 mi',title:'Light Sharpener — R-1',
+   desc:'WU 1 mi easy → R-1 (2 sets only) → CD 1 mi easy',
+   wo:{name:'R-1 (2 sets — stimulus only)',
+    reps:'2 sets of: 2×200 + 1×400 at R-pace',
+    rec:'Equal recovery = jog same distance as each rep: after each 200 → jog 200m easy · after the 400 → jog 400m easy. Between sets: 3 min easy jog. This session is a stimulus, not a workout. If anything feels off or tight, stop.',
+    paces:'R(200m): 37s · R(400m): 1:14 · WU/CD: 7:18–7:52/mi'},
+  },
+  {d:'WED',dt:'Jul 1',t:'easy',mi:'3 mi',title:'Easy Run',
+   desc:'Easy 30 min. Everything feels good.',
+   pace:'E: 7:18–7:52/mi'},
+  {d:'THU',dt:'Jul 2',t:'easy',mi:'2 mi',title:'Shakeout + Strides',
+   desc:'2 mi easy + 4×100m strides (smooth, fast, full walk recovery between each). Legs should feel fresh and snappy.',
+   pace:'Easy: 7:18–7:52/mi · Strides: smooth & fast'},
+  {d:'FRI',dt:'Jul 3',t:'rest',mi:'—',title:'Rest',desc:'Full rest. Stay off your feet. Hydrate. Eat well. Prep your gear tonight. Sleep early.'},
+  {d:'SAT',dt:'Jul 4',t:'race',mi:'5 mi',title:'🏁 RACE DAY',
+   desc:'Firecracker 5-Mile · Target: sub-30:00 (5:59/mi)',
+   wo:{name:'Race Strategy',
+    reps:'Mile 1: 6:05–6:10 (controlled — do NOT go out sub-6:00) · Mile 2–3: settle to 5:55–6:00/mi · Mile 4: hold the effort, not the pace · Mile 5: everything you have left.',
+    rec:'WU 1.5–2 mi easy + 4×100m strides before the start gun. Give yourself 30–40 min before the race for warmup.',
+    paces:'Goal: 29:30–29:59 · Conservative split: 30:05–30:20 is still an excellent day'},
+  },
+  {d:'SUN',dt:'Jul 5',t:'rest',mi:'—',title:'Rest &amp; Reflect',desc:'You did it. Rest. Celebrate. No running today.'},
+]},
+
+];
+
+function renderDay(day) {
+  let woBlock = '';
+  if (day.wo) {
+    woBlock = `<div class="wo-block">
+      <div class="wo-name">${day.wo.name}</div>
+      <div class="wo-reps">${day.wo.reps}</div>
+      <div class="wo-rec"><strong>Recovery:</strong> ${day.wo.rec}</div>
+      <div class="wo-paces">${day.wo.paces}</div>
+    </div>`;
+  }
+  const paceEl = day.pace ? `<div class="day-pace">${day.pace}</div>` : '';
+  const milesEl = day.mi !== '—' ? `<div class="day-miles">${day.mi}</div>` : '';
+  return `<div class="day-card ${day.t}">
+    <div class="day-top">
+      <div><span class="day-name">${day.d}</span> <span class="day-date">${day.dt}</span></div>
+      <span class="day-badge ${BADGE[day.t]}">${LABEL[day.t]}</span>
+    </div>
+    <div class="day-title">${day.title}</div>
+    ${milesEl}
+    <div class="day-desc">${day.desc}</div>
+    ${woBlock}
+    ${paceEl}
+  </div>`;
+}
+
+function renderWeek(wk) {
+  const phaseLabel = ['','PHASE 1','PHASE 2','PHASE 3','PHASE 4'][wk.phase];
+  return `<div class="week-block">
+    <div class="week-header">
+      <div class="week-num">WK ${wk.w}</div>
+      <div class="week-meta">
+        <span class="ph-pill" style="background:${wk.phaseColor}">${phaseLabel} · ${wk.phaseName}</span>
+        <span class="vdot-pill">VDOT ${wk.vdot}</span>
+        <span class="miles-pill">≈ ${wk.milesRange}</span>
+      </div>
+    </div>
+    <div class="day-grid">${wk.days.map(renderDay).join('')}</div>
+  </div>`;
+}
+
+const container = document.getElementById('weeks-container');
+let html = '';
+let lastPhase = 0;
+const phaseNames = ['','Foundation','R-Focus','I-Focus &amp; Mix','Race-Specific &amp; Taper'];
+const phaseWks   = ['','Weeks 1–4','Weeks 5–8','Weeks 9–12','Weeks 13–15'];
+const phaseClrs  = ['','var(--p1)','var(--p2)','var(--p3)','var(--p4)'];
+
+for (const wk of weeks) {
+  if (wk.phase !== lastPhase) {
+    if (lastPhase !== 0) html += '<hr class="divider">';
+    html += `<div class="section-title" style="color:${phaseClrs[wk.phase]};border-color:${phaseClrs[wk.phase]};">
+      Phase ${wk.phase} — ${phaseNames[wk.phase]} &nbsp;|&nbsp; ${phaseWks[wk.phase]}
+    </div>`;
+    lastPhase = wk.phase;
+  }
+  html += renderWeek(wk);
+}
+container.innerHTML = html;
+</script>
+</body>
+</html>
